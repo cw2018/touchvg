@@ -276,8 +276,11 @@ public class ViewHelper {
     public int insertSVGFromResource(String name) {
         int id = GraphView.getResIDFromName(mView.getContext(), "raw", name);
         name = ImageCache.SVG_PREFIX + name;
+        
         final Drawable d = mView.getImageCache().addSVG(
                 mView.getResources(), id, name);
+        insertSubImages(name);
+        
         return d == null ? 0 : mView.coreView().addImageShape(
                 name, ImageCache.getWidth(d), ImageCache.getHeight(d));
     }
@@ -286,8 +289,11 @@ public class ViewHelper {
     public int insertSVGFromResource(String name, int xc, int yc) {
         int id = GraphView.getResIDFromName(mView.getContext(), "raw", name);
         name = ImageCache.SVG_PREFIX + name;
+        
         final Drawable d = mView.getImageCache().addSVG(
                 mView.getResources(), id, name);
+        insertSubImages(name);
+        
         return d == null ? 0 : mView.coreView().addImageShape(name, xc, yc,
                 ImageCache.getWidth(d), ImageCache.getHeight(d));
     }
@@ -314,16 +320,33 @@ public class ViewHelper {
     
     //! 在默认位置插入一个PNG、JPEG或SVG等文件的图像
     public int insertImageFromFile(String filename) {
+        final ImageCache cache = mView.getImageCache();
         String name = filename.substring(filename.lastIndexOf('/') + 1).toLowerCase();
         Drawable d;
         
         if (name.endsWith(".svg")) {
-            d = mView.getImageCache().addSVGFile(filename, name);
-        } else {
-            d = mView.getImageCache().addBitmapFile(mView.getResources(), filename, name);
+            d = cache.addSVGFile(filename, name);
+            insertSubImages(name);
+        }
+        else {
+            d = cache.addBitmapFile(mView.getResources(), filename, name);
         }
         return d == null ? 0 : mView.coreView().addImageShape(name,
                 ImageCache.getWidth(d), ImageCache.getHeight(d));
+    }
+    
+    private void insertSubImages(String name) {
+        final ImageCache cache = mView.getImageCache();
+        
+        for (ImageCache.SubPath p : cache.subPictures) {
+            final String tmpName = name + "_" + p.id;
+            if (cache.addDrawable(p.drawable, tmpName)) {
+                mView.coreView().addImageShape(tmpName,
+                        p.bounds.centerX(), p.bounds.centerY(),
+                        p.bounds.width(), p.bounds.height());
+            }
+        }
+        cache.subPictures.clear();
     }
     
     //! 设置图像文件的默认路径(可以没有末尾的分隔符)，自动加载时用

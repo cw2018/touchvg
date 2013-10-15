@@ -31,6 +31,8 @@ import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.larvalabs.svgandroid.SVGBuilder.PathCallback;
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE
  * file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file
@@ -854,8 +856,10 @@ public class SVGParser {
 
 		final HashMap<String, Gradient> gradientMap = new HashMap<String, Gradient>();
 		Gradient gradient = null;
+		PathCallback pathCallback;
 
-		public SVGHandler() {
+		public SVGHandler(PathCallback c) {
+			pathCallback = c;
 			strokePaint = new Paint();
 			strokePaint.setAntiAlias(true);
 			strokePaint.setStyle(Paint.Style.STROKE);
@@ -1420,6 +1424,14 @@ public class SVGParser {
 				if (doFill(props, rect)) {
 					canvas.drawPath(p, fillPaint);
 					doLimits(rect);
+					if (pathCallback != null) {
+						final Matrix matrix = new Matrix();
+						
+						for (final Matrix mat : matrixStack) {
+							matrix.preConcat(mat);
+						}
+						pathCallback.onPathParsed(p, getStringAttr("id", atts), matrix);
+					}
 				}
 				if (doStroke(props)) {
 					canvas.drawPath(p, strokePaint);

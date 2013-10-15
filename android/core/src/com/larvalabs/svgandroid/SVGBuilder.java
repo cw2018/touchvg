@@ -1,10 +1,5 @@
 package com.larvalabs.svgandroid;
 
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.graphics.ColorFilter;
-import android.util.Log;
-
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -12,6 +7,13 @@ import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 
 import org.xml.sax.InputSource;
+
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import android.util.Log;
 
 import com.larvalabs.svgandroid.SVGParser.SVGHandler;
 
@@ -143,6 +145,10 @@ public class SVGBuilder {
 		this.closeInputStream = closeInputStream;
 		return this;
 	}
+	
+	public interface PathCallback {
+		void onPathParsed(Path p, String id, Matrix tramsform);
+	}
 
 	/**
 	 * Loads, reads, parses the SVG (or SVGZ).
@@ -151,12 +157,16 @@ public class SVGBuilder {
 	 * @throws SVGParseException if there is an error while parsing.
 	 */
 	public SVG build() throws SVGParseException {
+        return build(null);
+	}
+	
+	public SVG build(PathCallback pathCallback) throws SVGParseException {
 		if (data == null) {
 			throw new IllegalStateException("SVG input not specified. Call one of the readFrom...() methods first.");
 		}
 
 		try {
-			final SVGHandler handler = new SVGHandler();
+			final SVGHandler handler = new SVGHandler(pathCallback);
 			handler.setColorSwap(searchColor, replaceColor, overideOpacity);
 			handler.setWhiteMode(whiteMode);
 			if (strokeColorFilter != null) {

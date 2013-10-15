@@ -9,11 +9,19 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Picture;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PictureDrawable;
@@ -131,21 +139,9 @@ public class ImageCache extends Object {
     //! 插入一个程序资源中的SVG图像
     public Drawable addSVG(Resources res, int id, String name) {
         Drawable drawable = mCache.get(name);
-
         if (drawable == null && id != 0) {
-            try {
-                final SVG svg = new SVGBuilder().readFromResource(res, id).build();
-                final Picture picture = svg.getPicture();
-                
-                if (picture != null && picture.getWidth() > 0) {
-                    drawable = svg.getDrawable();
-                    mCache.put(name, drawable);
-                }
-            } catch (SVGParseException e) {
-                e.printStackTrace();
-            }
+            drawable = addSVG(new SVGBuilder().readFromResource(res, id), name);
         }
-        
         return drawable;
     }
     
@@ -184,16 +180,8 @@ public class ImageCache extends Object {
         if (drawable == null && name.endsWith(".svg")) {
             try {
                 InputStream data = new FileInputStream(new File(filename));
-                SVG svg = new SVGBuilder().readFromInputStream(data).build();
+                drawable = addSVG(new SVGBuilder().readFromInputStream(data), name);
                 data.close();
-                Picture picture = svg.getPicture();
-                
-                if (picture != null && picture.getWidth() > 0) {
-                    drawable = svg.getDrawable();
-                    mCache.put(name, drawable);
-                }
-            } catch (SVGParseException e) {
-                e.printStackTrace();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -202,5 +190,68 @@ public class ImageCache extends Object {
         }
         
         return drawable;
+    }
+    
+    public class SubPath {
+        public Drawable drawable;
+        public String id;
+        public RectF bounds;
+    }
+    public List<SubPath> subPictures = new ArrayList<SubPath>();
+    
+    private Drawable addSVG(SVGBuilder builder, String name) {
+        Drawable drawable = null;
+        
+        try {
+            final SVG svg = builder.build(new SVGBuilder.PathCallback() {
+                private int n = 0;
+                private Paint paint = new Paint();
+                private int[] colors = new int[] { Color.BLUE, Color.RED, Color.CYAN, Color.MAGENTA };
+                
+                @Override
+                public void onPathParsed(Path path, String id, Matrix tramsform) {
+                    final SubPath subpath = new SubPath();
+                    final Picture picture = new Picture();
+                    
+                    subpath.id = id;
+                    subpath.bounds = new RectF();
+                    path.computeBounds(subpath.bounds, false);
+                    tramsform.mapRect(subpath.bounds);
+                    
+                    final Canvas c = picture.beginRecording(
+                            (int)subpath.bounds.width(), (int)subpath.bounds.height());
+                    paint.setStyle(Paint.Style.FILL);
+                    paint.setColor(colors[++n % colors.length]);
+                    c.concat(tramsform);
+                    c.drawPath(path, paint);
+                    picture.endRecording();
+                    
+                    if (picture.getWidth() > 0) {
+                        subpath.drawable = new PictureDrawable(picture);
+                        subPictures.add(subpath);
+                    }
+                }
+            });
+            
+            final Picture picture = svg.getPicture();
+            
+            if (picture != null && picture.getWidth() > 0) {
+                drawable = svg.getDrawable();
+                mCache.put(name, drawable);
+            }
+        } catch (SVGParseException e) {
+            e.printStackTrace();
+        }
+        
+        return drawable;
+    }
+    
+    //! 插入一个可绘制图像
+    public boolean addDrawable(Drawable drawable, String name) {
+        boolean ret = (drawable != null && mCache.get(name) == null);
+        if (ret) {
+            mCache.put(name, drawable);
+        }
+        return ret;
     }
 }
