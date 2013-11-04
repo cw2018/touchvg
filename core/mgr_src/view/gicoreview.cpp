@@ -77,11 +77,13 @@ public:
     long            regenPending;
     long            appendPending;
     long            redrawPending;
+    bool            needRedraw;
+    volatile long   drawCount;
     std::map<int, MgShape* (*)()>   _shapeCreators;
 
 public:
     GiCoreViewImpl() : curview(NULL), refcount(1), gestureHandler(0)
-        , regenPending(-1), appendPending(-1), redrawPending(-1)
+        , regenPending(-1), appendPending(-1), redrawPending(-1), drawCount(0)
     {
         motion.view = this;
         motion.gestureType = 0;
@@ -247,6 +249,7 @@ public:
     }
 
     void checkDrawAppendEnded();
+    void clearRedrawFlag();
     bool drawCommand(GcBaseView* view, const MgMotion& motion, GiGraphics& gs);
     bool gestureToCommand(const MgMotion& motion);
 
@@ -431,13 +434,20 @@ public:
         _impl->regenPending = -1;
         _impl->appendPending = -1;
         _impl->redrawPending = -1;
+        _impl->needRedraw = true;
 
-        if (regenPending > 0)
+        if (regenPending > 0) {
             _impl->regenAll();
-        else if (appendPending > 0)
+        }
+        else if (appendPending > 0) {
             _impl->regenAppend();
-        else if (redrawPending > 0)
+        }
+        else if (redrawPending > 0) {
             _impl->redraw();
+        }
+        else {
+            _impl->needRedraw = false;
+        }
     }
 };
 
@@ -547,6 +557,14 @@ void GiCoreViewImpl::checkDrawAppendEnded()
     }
 }
 
+void GiCoreViewImpl::clearRedrawFlag()
+{
+    if (needRedraw) {
+        needRedraw = false;
+        giInterlockedIncrement(&drawCount);
+    }
+}
+
 int GiCoreView::drawAll(GiView* view, GiCanvas* canvas)
 {
     GcBaseView* aview = impl->_doc->findView(view);
@@ -561,6 +579,7 @@ int GiCoreView::drawAll(GiView* view, GiCanvas* canvas)
         impl->newids.push_back(0);
     }
     impl->checkDrawAppendEnded();
+    impl->clearRedrawFlag();
 
     return n;
 }
@@ -580,6 +599,7 @@ bool GiCoreView::drawAppend(GiView* view, GiCanvas* canvas)
         impl->newids.push_back(0);
     }
     impl->checkDrawAppendEnded();
+    impl->clearRedrawFlag();
 
     return n > 0;
 }
@@ -596,6 +616,7 @@ void GiCoreView::dynDraw(GiView* view, GiCanvas* canvas)
         aview->dynDraw(impl->motion, *gs);
         gs->endPaint();
     }
+    impl->clearRedrawFlag();
 }
 
 void GiCoreView::onSize(GiView* view, int w, int h)
@@ -751,12 +772,17 @@ int GiCoreView::addShapesForTest()
 int GiCoreView::getShapeCount()
 {
     MgShapesLock locker(MgShapesLock::ReadOnly, impl);
-    return impl->doc()->getShapeCount();
+    return impl->doc()->getShapeCount();    // 几乎不会冲突，故不检查锁定成功否
 }
 
 int GiCoreView::getChangeCount()
 {
     return impl->doc()->getChangeCount();
+}
+
+int GiCoreView::getDrawCount() const
+{
+    return impl->drawCount;
 }
 
 int GiCoreView::getSelectedShapeCount()
@@ -779,20 +805,26 @@ int GiCoreView::getSelectedShapeType()
 
 bool GiCoreView::loadShapes(MgStorage* s, bool readOnly)
 {
-    bool ret = true;
+    bool ret = false;
 
     MgCommand* cmd = impl->getCommand();
     if (cmd) cmd->cancel(&impl->motion);
 
     if (s) {
         MgShapesLock locker(MgShapesLock::Load, impl);
-        ret = impl->doc()->load(impl->getShapeFactory(), s);
-        impl->doc()->setReadOnly(readOnly);
-        LOGD("Load %d shapes and %d layers", impl->doc()->getShapeCount(), impl->doc()->getLayerCount());
+        if (locker.locked()) {
+            ret = impl->doc()->load(impl->getShapeFactory(), s);
+            impl->doc()->setReadOnly(readOnly);
+            LOGD("Load %d shapes and %d layers",
+                 impl->doc()->getShapeCount(), impl->doc()->getLayerCount());
+        }
     }
     else {
         MgShapesLock locker(MgShapesLock::Remove, impl);
-        impl->doc()->clear();
+        if (locker.locked()) {
+            impl->doc()->clear();
+            ret = true;
+        }
     }
     impl->regenAll();
     impl->getCmdSubject()->onDocLoaded(&impl->motion);
@@ -803,7 +835,7 @@ bool GiCoreView::loadShapes(MgStorage* s, bool readOnly)
 bool GiCoreView::saveShapes(MgStorage* s)
 {
     MgShapesLock locker(MgShapesLock::ReadOnly, impl);
-    return s && impl->doc()->save(s);
+    return s && locker.locked() && impl->doc()->save(s);
 }
 
 void GiCoreView::clear()

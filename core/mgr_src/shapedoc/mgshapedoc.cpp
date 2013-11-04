@@ -15,9 +15,9 @@ struct MgShapeDoc::Impl {
     Matrix2d    xf;
     Box2d       rectW;
     float       viewScale;
-    long        changeCount;
-    bool        readOnly;
+    volatile long   changeCount;
     volatile long   refcount;
+    bool        readOnly;
 
     MgLockRW    lock;
     MgLockRW    dynlock;

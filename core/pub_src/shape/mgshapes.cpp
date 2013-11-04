@@ -354,20 +354,28 @@ bool MgShapes::load(MgShapeFactory* factory, MgStorage* s, bool addOnly)
         s->readUInt32("count", 0);
         
         while (ret && s->readNode("shape", index, false)) {
-            int type = s->readUInt32("type", 0);
-            int id = s->readUInt32("id", 0);
-            MgShape* shape = factory->createShape(type);
-            
+            const int type = s->readUInt32("type", 0);
+            const int id = s->readUInt32("id", 0);
             s->readFloatArray("extent", &rect.xmin, 4);
-            if (shape) {
-                shape->setParent(this, im->getNewID(id));
+            
+            MgShape* shape = addOnly && id ? findShape(id) : NULL;
+            
+            if (shape && shape->shape()->getType() == type) {
                 ret = shape->load(factory, s);
-                if (ret) {
-                    shape->shape()->setFlag(kMgClosed, shape->shape()->isClosed());
-                    im->shapes.push_back(shape);
-                }
-                else {
-                    shape->release();
+                shape->shape()->setFlag(kMgClosed, shape->shape()->isClosed());
+            }
+            else {
+                shape = factory->createShape(type);
+                if (shape) {
+                    shape->setParent(this, im->getNewID(id));
+                    ret = shape->load(factory, s);
+                    if (ret) {
+                        shape->shape()->setFlag(kMgClosed, shape->shape()->isClosed());
+                        im->shapes.push_back(shape);
+                    }
+                    else {
+                        shape->release();
+                    }
                 }
             }
             s->readNode("shape", index++, true);

@@ -84,8 +84,11 @@ public:
     //! 返回图形总数
     int getShapeCount();
 
-    //! 返回图形改变次数，可用于检查是否需要保存
+    //! 返回静态图形改变次数，可用于检查是否需要保存
     int getChangeCount();
+    
+    //! 返回已绘制次数，可用于录屏
+    int getDrawCount() const;
 
     //! 返回选中的图形个数
     int getSelectedShapeCount();
