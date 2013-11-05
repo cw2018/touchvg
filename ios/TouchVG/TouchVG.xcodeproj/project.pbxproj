@@ -166,6 +166,7 @@
 		AE3D40F51818A3EF003C432D /* svgcanvas.h in Headers */ = {isa = PBXBuildFile; fileRef = AE3D40F41818A3EF003C432D /* svgcanvas.h */; };
 		AE3D40FE1818A42A003C432D /* simple_svg.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AE3D40FA1818A42A003C432D /* simple_svg.hpp */; };
 		AE3D40FF1818A42A003C432D /* svgcanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE3D40FB1818A42A003C432D /* svgcanvas.cpp */; };
+		AE5BC29918287FAD0071B7CA /* mgcoreview.h in Headers */ = {isa = PBXBuildFile; fileRef = AE5BC29818287FAD0071B7CA /* mgcoreview.h */; };
 		AEC33820180E28520029D7B3 /* ImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC3381E180E28520029D7B3 /* ImageCache.h */; };
 		AEC33821180E28520029D7B3 /* ImageCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEC3381F180E28520029D7B3 /* ImageCache.mm */; };
 		AEE5C71017E17D1100AFF74D /* GiGraphViewImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = AEE5C70E17E17D1100AFF74D /* GiGraphViewImpl.h */; };
@@ -335,6 +336,7 @@
 		AE3D40F41818A3EF003C432D /* svgcanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgcanvas.h; sourceTree = "<group>"; };
 		AE3D40FA1818A42A003C432D /* simple_svg.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = simple_svg.hpp; sourceTree = "<group>"; };
 		AE3D40FB1818A42A003C432D /* svgcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgcanvas.cpp; sourceTree = "<group>"; };
+		AE5BC29818287FAD0071B7CA /* mgcoreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mgcoreview.h; sourceTree = "<group>"; };
 		AEC3381E180E28520029D7B3 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCache.h; path = ../../view/src/ImageCache.h; sourceTree = "<group>"; };
 		AEC3381F180E28520029D7B3 /* ImageCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ImageCache.mm; path = ../../view/src/ImageCache.mm; sourceTree = "<group>"; };
 		AEE5C70E17E17D1100AFF74D /* GiGraphViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiGraphViewImpl.h; path = ../../view/src/GiGraphViewImpl.h; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 		AE34CE9417F903B4004BC88B /* cmd */ = {
 			isa = PBXGroup;
 			children = (
+				AE5BC29818287FAD0071B7CA /* mgcoreview.h */,
 				AE34CE9517F903B4004BC88B /* mgaction.h */,
 				AE34CE9617F903B4004BC88B /* mgcmd.h */,
 				AE34CE9717F903B4004BC88B /* mglockdata.h */,
@@ -961,6 +964,7 @@
 				AE3D40F51818A3EF003C432D /* svgcanvas.h in Headers */,
 				AE3D40FE1818A42A003C432D /* simple_svg.hpp in Headers */,
 				AE037956181FA29B0049931F /* GiShapeAdapter.h in Headers */,
+				AE5BC29918287FAD0071B7CA /* mgcoreview.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

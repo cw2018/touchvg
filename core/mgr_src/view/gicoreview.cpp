@@ -235,10 +235,11 @@ public:
         }
     }
 
-    void setView(GcBaseView* view) {
+    bool setView(GcBaseView* view) {
         if (curview != view) {
             curview = view;
         }
+        return !!view;
     }
 
     static void onShapesLocked(MgShapeDoc* doc, void* obj, bool locked) {
@@ -492,9 +493,7 @@ MgView* GiCoreView::viewAdapter()
 
 long GiCoreView::viewAdapterHandle()
 {
-    long ret;
-    *(MgView **)&ret = viewAdapter();
-    return ret;
+    return viewAdapter()->toHandle();
 }
 
 void GiCoreView::createView(GiView* view, int type)
@@ -634,8 +633,7 @@ bool GiCoreView::onGesture(GiView* view, GiGestureType type,
     GcBaseView* aview = impl->_doc->findView(view);
     bool ret = false;
 
-    if (aview) {
-        impl->setView(aview);
+    if (impl->setView(aview)) {
         impl->motion.gestureType = type;
         impl->motion.gestureState = (MgGestureState)state;
         impl->motion.pressDrag = (type == kGiGesturePress && state < kGiGestureEnded);
@@ -678,8 +676,7 @@ bool GiCoreView::twoFingersMove(GiView* view, GiGestureState state,
     GcBaseView* aview = impl->_doc->findView(view);
     bool ret = false;
 
-    if (aview) {
-        impl->setView(aview);
+    if (impl->setView(aview)) {
         impl->motion.gestureType = kGiTwoFingersMove;
         impl->motion.gestureState = (MgGestureState)state;
         impl->motion.pressDrag = false;
@@ -735,20 +732,17 @@ const char* GiCoreView::getCommand() const
     return impl->_cmds->getCommandName();
 }
 
-bool GiCoreView::setCommand(GiView* view, const char* name, const char* params)
+bool GiCoreView::setCommand(const char* name, const char* params)
 {
     DrawLocker locker(impl);
+    MgJsonStorage s;
+    return impl->curview && impl->_cmds->setCommand(&impl->motion, name, s.storageForRead(params));
+}
+
+bool GiCoreView::setCommand(GiView* view, const char* name, const char* params)
+{
     GcBaseView* aview = impl->_doc->findView(view);
-    bool ret = false;
-
-    if (aview) {
-        impl->setView(aview);
-        MgJsonStorage s;
-        ret = impl->_cmds->setCommand(&impl->motion, name, 
-                                      s.storageForRead(params));
-    }
-
-    return ret;
+    return impl->setView(aview) && setCommand(name, params);
 }
 
 bool GiCoreView::doContextAction(int action)

@@ -41,6 +41,17 @@ public class MgView : IDisposable {
     }
   }
 
+  public static MgView fromHandle(int h) {
+    IntPtr cPtr = touchvgPINVOKE.MgView_fromHandle(h);
+    MgView ret = (cPtr == IntPtr.Zero) ? null : new MgView(cPtr, false);
+    return ret;
+  }
+
+  public int toHandle() {
+    int ret = touchvgPINVOKE.MgView_toHandle(swigCPtr);
+    return ret;
+  }
+
   public virtual MgCmdManager cmds() {
     IntPtr cPtr = touchvgPINVOKE.MgView_cmds(swigCPtr);
     MgCmdManager ret = (cPtr == IntPtr.Zero) ? null : new MgCmdManager(cPtr, false);

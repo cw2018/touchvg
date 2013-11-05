@@ -8,12 +8,11 @@
 
 package touchvg.core;
 
-public class GiCoreView {
+public class GiCoreView extends MgCoreView {
   private long swigCPtr;
-  protected boolean swigCMemOwn;
 
   protected GiCoreView(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+    super(touchvgJNI.GiCoreView_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
@@ -33,6 +32,7 @@ public class GiCoreView {
       }
       swigCPtr = 0;
     }
+    super.delete();
   }
 
   public GiCoreView(GiCoreView mainView) {
@@ -99,16 +99,25 @@ public class GiCoreView {
     return touchvgJNI.GiCoreView_twoFingersMove__SWIG_1(swigCPtr, this, GiView.getCPtr(view), view, state.swigValue(), x1, y1, x2, y2);
   }
 
-  public boolean isPressDragging() {
-    return touchvgJNI.GiCoreView_isPressDragging(swigCPtr, this);
-  }
-
   public GiGestureType getGestureType() {
     return GiGestureType.swigToEnum(touchvgJNI.GiCoreView_getGestureType(swigCPtr, this));
   }
 
   public GiGestureState getGestureState() {
     return GiGestureState.swigToEnum(touchvgJNI.GiCoreView_getGestureState(swigCPtr, this));
+  }
+
+  public MgView viewAdapter() {
+    long cPtr = touchvgJNI.GiCoreView_viewAdapter(swigCPtr, this);
+    return (cPtr == 0) ? null : new MgView(cPtr, false);
+  }
+
+  public int viewAdapterHandle() {
+    return touchvgJNI.GiCoreView_viewAdapterHandle(swigCPtr, this);
+  }
+
+  public boolean isPressDragging() {
+    return touchvgJNI.GiCoreView_isPressDragging(swigCPtr, this);
   }
 
   public String getCommand() {
@@ -121,6 +130,14 @@ public class GiCoreView {
 
   public boolean setCommand(GiView view, String name) {
     return touchvgJNI.GiCoreView_setCommand__SWIG_1(swigCPtr, this, GiView.getCPtr(view), view, name);
+  }
+
+  public boolean setCommand(String name, String params) {
+    return touchvgJNI.GiCoreView_setCommand__SWIG_2(swigCPtr, this, name, params);
+  }
+
+  public boolean setCommand(String name) {
+    return touchvgJNI.GiCoreView_setCommand__SWIG_3(swigCPtr, this, name);
   }
 
   public boolean doContextAction(int action) {
@@ -141,6 +158,10 @@ public class GiCoreView {
 
   public int getChangeCount() {
     return touchvgJNI.GiCoreView_getChangeCount(swigCPtr, this);
+  }
+
+  public int getDrawCount() {
+    return touchvgJNI.GiCoreView_getDrawCount(swigCPtr, this);
   }
 
   public int getSelectedShapeCount() {
@@ -233,15 +254,6 @@ public class GiCoreView {
 
   public boolean getBoundingBox(Floats box, int shapeId) {
     return touchvgJNI.GiCoreView_getBoundingBox__SWIG_1(swigCPtr, this, Floats.getCPtr(box), box, shapeId);
-  }
-
-  public int viewAdapterHandle() {
-    return touchvgJNI.GiCoreView_viewAdapterHandle(swigCPtr, this);
-  }
-
-  public MgView viewAdapter() {
-    long cPtr = touchvgJNI.GiCoreView_viewAdapter(swigCPtr, this);
-    return (cPtr == 0) ? null : new MgView(cPtr, false);
   }
 
 }

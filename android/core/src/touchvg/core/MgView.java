@@ -35,6 +35,15 @@ public class MgView {
     }
   }
 
+  public static MgView fromHandle(int h) {
+    long cPtr = touchvgJNI.MgView_fromHandle(h);
+    return (cPtr == 0) ? null : new MgView(cPtr, false);
+  }
+
+  public int toHandle() {
+    return touchvgJNI.MgView_toHandle(swigCPtr, this);
+  }
+
   public MgCmdManager cmds() {
     long cPtr = touchvgJNI.MgView_cmds(swigCPtr, this);
     return (cPtr == 0) ? null : new MgCmdManager(cPtr, false);
