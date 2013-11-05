@@ -18,6 +18,7 @@ bool MgBaseShape::isKindOf(int type) const {
 }
 Box2d MgBaseShape::getExtent() const { return _getExtent(); }
 int MgBaseShape::getChangeCount() const { return _changeCount; }
+void MgBaseShape::afterChanged() { _changeCount++; }
 void MgBaseShape::update() { _update(); }
 void MgBaseShape::transform(const Matrix2d& mat) { _transform(mat); }
 void MgBaseShape::clear() { _clear(); }
@@ -78,7 +79,7 @@ void MgBaseShape::_update()
     if (_extent.height() < minTol().equalPoint()) {
         _extent.inflate(0, minTol().equalPoint());
     }
-    _changeCount++;
+    afterChanged();
 }
 
 void MgBaseShape::_transform(const Matrix2d& mat)

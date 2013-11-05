@@ -558,6 +558,42 @@ SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_toHandle(void * jarg1) {
 }
 
 
+SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_viewAdapterHandle(void * jarg1) {
+  long jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  long result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  result = (long)(arg1)->viewAdapterHandle();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_docHandle(void * jarg1) {
+  long jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  long result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  result = (long)(arg1)->docHandle();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_shapesHandle(void * jarg1) {
+  long jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  long result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  result = (long)(arg1)->shapesHandle();
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_isPressDragging(void * jarg1) {
   unsigned int jresult ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;

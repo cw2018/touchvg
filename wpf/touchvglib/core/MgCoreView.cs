@@ -52,6 +52,21 @@ public class MgCoreView : IDisposable {
     return ret;
   }
 
+  public virtual int viewAdapterHandle() {
+    int ret = touchvgPINVOKE.MgCoreView_viewAdapterHandle(swigCPtr);
+    return ret;
+  }
+
+  public virtual int docHandle() {
+    int ret = touchvgPINVOKE.MgCoreView_docHandle(swigCPtr);
+    return ret;
+  }
+
+  public virtual int shapesHandle() {
+    int ret = touchvgPINVOKE.MgCoreView_shapesHandle(swigCPtr);
+    return ret;
+  }
+
   public virtual bool isPressDragging() {
     bool ret = touchvgPINVOKE.MgCoreView_isPressDragging(swigCPtr);
     return ret;

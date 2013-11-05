@@ -82,6 +82,9 @@ public:
     //! 返回拥有者对象
     MgObject* getOwner() const;
     
+    static MgShapes* fromHandle(long h) { MgShapes* p; *(long*)&p = h; return p; } //!< 转为对象
+    long toHandle() { long h; *(MgShapes**)&h = this; return h; }   //!< 得到句柄，用于跨库转换
+    
 public:
     virtual MgObject* clone() const;
     virtual void copy(const MgObject& src);

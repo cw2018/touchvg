@@ -112,12 +112,20 @@ public class GiCoreView extends MgCoreView {
     return (cPtr == 0) ? null : new MgView(cPtr, false);
   }
 
+  public boolean isPressDragging() {
+    return touchvgJNI.GiCoreView_isPressDragging(swigCPtr, this);
+  }
+
   public int viewAdapterHandle() {
     return touchvgJNI.GiCoreView_viewAdapterHandle(swigCPtr, this);
   }
 
-  public boolean isPressDragging() {
-    return touchvgJNI.GiCoreView_isPressDragging(swigCPtr, this);
+  public int docHandle() {
+    return touchvgJNI.GiCoreView_docHandle(swigCPtr, this);
+  }
+
+  public int shapesHandle() {
+    return touchvgJNI.GiCoreView_shapesHandle(swigCPtr, this);
   }
 
   public String getCommand() {

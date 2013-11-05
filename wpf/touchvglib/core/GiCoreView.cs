@@ -125,13 +125,23 @@ public class GiCoreView : MgCoreView {
     return ret;
   }
 
-  public int viewAdapterHandle() {
+  public override bool isPressDragging() {
+    bool ret = touchvgPINVOKE.GiCoreView_isPressDragging(swigCPtr);
+    return ret;
+  }
+
+  public override int viewAdapterHandle() {
     int ret = touchvgPINVOKE.GiCoreView_viewAdapterHandle(swigCPtr);
     return ret;
   }
 
-  public override bool isPressDragging() {
-    bool ret = touchvgPINVOKE.GiCoreView_isPressDragging(swigCPtr);
+  public override int docHandle() {
+    int ret = touchvgPINVOKE.GiCoreView_docHandle(swigCPtr);
+    return ret;
+  }
+
+  public override int shapesHandle() {
+    int ret = touchvgPINVOKE.GiCoreView_shapesHandle(swigCPtr);
     return ret;
   }
 

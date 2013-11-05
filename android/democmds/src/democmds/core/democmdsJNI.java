@@ -32,6 +32,9 @@ public class democmdsJNI {
   public final static native void delete_MgCoreView(long jarg1);
   public final static native long MgCoreView_fromHandle(int jarg1);
   public final static native int MgCoreView_toHandle(long jarg1, MgCoreView jarg1_);
+  public final static native int MgCoreView_viewAdapterHandle(long jarg1, MgCoreView jarg1_);
+  public final static native int MgCoreView_docHandle(long jarg1, MgCoreView jarg1_);
+  public final static native int MgCoreView_shapesHandle(long jarg1, MgCoreView jarg1_);
   public final static native boolean MgCoreView_isPressDragging(long jarg1, MgCoreView jarg1_);
   public final static native String MgCoreView_getCommand(long jarg1, MgCoreView jarg1_);
   public final static native boolean MgCoreView_setCommand__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, String jarg3);

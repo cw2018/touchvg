@@ -81,6 +81,9 @@ public:
 
     //! 设置当前图形列表（图层或复合图形）
     bool setCurrentShapes(MgShapes* shapes);
+    
+    //! 返回当前图层
+    MgLayer* getCurrentLayer() const;
 
     //! 切换图层，自动追加末尾图层
     bool switchLayer(int index);
@@ -123,6 +126,9 @@ public:
     long unlockData(bool forWrite);
     void afterChanged();
 #endif
+    
+    static MgShapeDoc* fromHandle(long h) { MgShapeDoc* p; *(long*)&p = h; return p; } //!< 转为对象
+    long toHandle() { long h; *(MgShapeDoc**)&h = this; return h; }   //!< 得到句柄，用于跨库转换
 
 public:
     virtual MgObject* clone() const;

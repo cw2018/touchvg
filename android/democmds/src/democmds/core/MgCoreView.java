@@ -44,6 +44,18 @@ public class MgCoreView {
     return democmdsJNI.MgCoreView_toHandle(swigCPtr, this);
   }
 
+  public int viewAdapterHandle() {
+    return democmdsJNI.MgCoreView_viewAdapterHandle(swigCPtr, this);
+  }
+
+  public int docHandle() {
+    return democmdsJNI.MgCoreView_docHandle(swigCPtr, this);
+  }
+
+  public int shapesHandle() {
+    return democmdsJNI.MgCoreView_shapesHandle(swigCPtr, this);
+  }
+
   public boolean isPressDragging() {
     return democmdsJNI.MgCoreView_isPressDragging(swigCPtr, this);
   }

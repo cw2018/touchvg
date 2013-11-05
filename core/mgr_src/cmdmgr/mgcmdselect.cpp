@@ -1398,10 +1398,10 @@ bool MgCmdSelect::overturnPolygon(const MgMotion* sender)
 bool MgCmdSelect::twoFingersMove(const MgMotion* sender)
 {
     if (sender->gestureState == kMgGesturePossible) {
-        return !m_selIds.empty() && !mgIsZero(sender->distanceM());  // 选择了图形，且双指未重合
+        return !m_selIds.empty() && !mgIsZero(sender->distanceM()); // 选择了图形，且双指未重合
     }
     if (sender->gestureState == kMgGestureBegan) {
-        if (m_selIds.empty() || sender->view->isReadOnly()) {                     // 没有选择图形
+        if (m_selIds.empty() || sender->view->isReadOnly()) {       // 没有选择图形
             return false;
         }
         cloneShapes(sender->view);

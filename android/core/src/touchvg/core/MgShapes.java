@@ -171,6 +171,15 @@ public class MgShapes extends MgObject {
     return (cPtr == 0) ? null : new MgObject(cPtr, false);
   }
 
+  public static MgShapes fromHandle(int h) {
+    long cPtr = touchvgJNI.MgShapes_fromHandle(h);
+    return (cPtr == 0) ? null : new MgShapes(cPtr, false);
+  }
+
+  public int toHandle() {
+    return touchvgJNI.MgShapes_toHandle(swigCPtr, this);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgShapes_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

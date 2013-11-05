@@ -142,6 +142,9 @@ public:
 
     //! 返回改变计数
     virtual int getChangeCount() const;
+    
+    //! update() 或改变图形内容后调用
+    virtual void afterChanged();
 
     //! 参数改变后重新计算坐标
     virtual void update();

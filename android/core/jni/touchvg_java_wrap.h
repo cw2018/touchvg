@@ -110,6 +110,7 @@ public:
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual int getChangeCount() const;
+    virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
     virtual void clear();
@@ -133,10 +134,10 @@ public:
     virtual void setFlag(MgShapeBit bit, bool on);
 public:
     bool swig_overrides(int n) {
-      return (n < 30 ? swig_override[n] : false);
+      return (n < 31 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[30];
+    bool swig_override[31];
 };
 
 class SwigDirector_MgBaseRect : public MgBaseRect, public Swig::Director {
@@ -154,6 +155,7 @@ public:
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual int getChangeCount() const;
+    virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
     virtual void clear();
@@ -177,10 +179,10 @@ public:
     virtual void setFlag(MgShapeBit bit, bool on);
 public:
     bool swig_overrides(int n) {
-      return (n < 30 ? swig_override[n] : false);
+      return (n < 31 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[30];
+    bool swig_override[31];
 };
 
 class SwigDirector_MgBaseLines : public MgBaseLines, public Swig::Director {
@@ -198,6 +200,7 @@ public:
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual int getChangeCount() const;
+    virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
     virtual void clear();
@@ -221,10 +224,10 @@ public:
     virtual void setFlag(MgShapeBit bit, bool on);
 public:
     bool swig_overrides(int n) {
-      return (n < 30 ? swig_override[n] : false);
+      return (n < 31 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[30];
+    bool swig_override[31];
 };
 
 class SwigDirector_MgComposite : public MgComposite, public Swig::Director {
@@ -242,6 +245,7 @@ public:
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual int getChangeCount() const;
+    virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
     virtual void clear();
@@ -266,10 +270,10 @@ public:
     virtual bool canOffsetShapeAlone(MgShape *shape);
 public:
     bool swig_overrides(int n) {
-      return (n < 31 ? swig_override[n] : false);
+      return (n < 32 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[31];
+    bool swig_override[32];
 };
 
 class SwigDirector_MgCommand : public MgCommand, public Swig::Director {

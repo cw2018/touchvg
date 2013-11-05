@@ -44,6 +44,18 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_toHandle(swigCPtr, this);
   }
 
+  public int viewAdapterHandle() {
+    return touchvgJNI.MgCoreView_viewAdapterHandle(swigCPtr, this);
+  }
+
+  public int docHandle() {
+    return touchvgJNI.MgCoreView_docHandle(swigCPtr, this);
+  }
+
+  public int shapesHandle() {
+    return touchvgJNI.MgCoreView_shapesHandle(swigCPtr, this);
+  }
+
   public boolean isPressDragging() {
     return touchvgJNI.MgCoreView_isPressDragging(swigCPtr, this);
   }

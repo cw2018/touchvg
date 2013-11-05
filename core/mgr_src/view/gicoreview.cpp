@@ -11,6 +11,7 @@
 #include <mglockdata.h>
 #include <RandomShape.h>
 #include <mgjsonstorage.h>
+#include <mglayer.h>
 #include <svgcanvas.h>
 #include <cmdsubject.h>
 #include <mgselect.h>
@@ -131,7 +132,7 @@ public:
         return _cmds->setCommand(sender, name, NULL); }
     bool setCurrentShapes(MgShapes* shapes) {
         return doc()->setCurrentShapes(shapes); }
-    bool isReadOnly() const { return doc()->isReadOnly(); }
+    bool isReadOnly() const { return doc()->isReadOnly() || doc()->getCurrentLayer()->isLocked(); }
 
     bool shapeWillAdded(MgShape* shape) {
         return getCmdSubject()->onShapeWillAdded(&motion, shape); }
@@ -494,6 +495,16 @@ MgView* GiCoreView::viewAdapter()
 long GiCoreView::viewAdapterHandle()
 {
     return viewAdapter()->toHandle();
+}
+
+long GiCoreView::docHandle()
+{
+    return impl->doc()->toHandle();
+}
+
+long GiCoreView::shapesHandle()
+{
+    return impl->shapes()->toHandle();
 }
 
 void GiCoreView::createView(GiView* view, int type)
@@ -990,6 +1001,7 @@ void GiCoreView::setContext(const GiContext& ctx, int mask, int apply)
             for (int i = 0; i < n; i++) {
                 if (shapes[i]) {
                     shapes[i]->context()->copy(ctx, mask);
+                    shapes[i]->shape()->afterChanged();
                 }
             }
             impl->redraw();

@@ -10,6 +10,7 @@
 
 struct MgShapeDoc::Impl {
     std::vector<MgLayer*> layers;
+    MgLayer*    curLayer;
     MgShapes*   curShapes;
     GiContext   context;
     Matrix2d    xf;
@@ -28,8 +29,9 @@ struct MgShapeDoc::Impl {
 MgShapeDoc::MgShapeDoc()
 {
     im = new Impl();
-    im->layers.push_back(MgLayer::create(this, 0));
-    im->curShapes = im->layers[0];
+    im->curLayer = MgLayer::create(this, 0);
+    im->layers.push_back(im->curLayer);
+    im->curShapes = im->curLayer;
     im->viewScale = 0;
     im->changeCount = 0;
     im->readOnly = false;
@@ -124,7 +126,8 @@ void MgShapeDoc::clear()
         im->layers.pop_back();
     }
     im->layers[0]->clear();
-    im->curShapes = im->layers[0];
+    im->curLayer = im->layers[0];
+    im->curShapes = im->curLayer;
 }
 
 void MgShapeDoc::clearCachedData()
@@ -139,7 +142,9 @@ Box2d MgShapeDoc::getExtent() const
     Box2d rect;
 
     for (unsigned i = 0; i < im->layers.size(); i++) {
-        rect.unionWith(im->layers[i]->getExtent());
+        if (!im->layers[i]->isHided()) {
+            rect.unionWith(im->layers[i]->getExtent());
+        }
     }
 
     return rect;
@@ -163,8 +168,13 @@ MgShapes* MgShapeDoc::getCurrentShapes() const
 
 bool MgShapeDoc::setCurrentShapes(MgShapes* shapes)
 {
-    im->curShapes = shapes ? shapes : im->layers[0];
+    im->curShapes = shapes ? shapes : im->curLayer;
     return true;
+}
+
+MgLayer* MgShapeDoc::getCurrentLayer() const
+{
+    return im->curLayer;
 }
 
 int MgShapeDoc::getLayerCount() const
@@ -177,10 +187,12 @@ bool MgShapeDoc::switchLayer(int index)
     bool ret = false;
 
     if (index == getLayerCount()) {
-        im->layers.push_back(MgLayer::create(this, index));
+        im->curLayer = MgLayer::create(this, index);
+        im->layers.push_back(im->curLayer);
     }
     if (index >= 0 && index < getLayerCount()) {
-        im->curShapes = im->layers[index];
+        im->curLayer = im->layers[index];
+        im->curShapes = im->curLayer;
         ret = true;
     }
 
@@ -192,7 +204,9 @@ int MgShapeDoc::draw(GiGraphics& gs) const
     int n = 0;
 
     for (unsigned i = 0; i < im->layers.size(); i++) {
-        n += im->layers[i]->draw(gs);
+        if (!im->layers[i]->isHided()) {
+            n += im->layers[i]->draw(gs);
+        }
     }
 
     return n;

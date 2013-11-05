@@ -208,6 +208,17 @@ public class MgShapes : MgObject {
     return ret;
   }
 
+  public static MgShapes fromHandle(int h) {
+    IntPtr cPtr = touchvgPINVOKE.MgShapes_fromHandle(h);
+    MgShapes ret = (cPtr == IntPtr.Zero) ? null : new MgShapes(cPtr, false);
+    return ret;
+  }
+
+  public int toHandle() {
+    int ret = touchvgPINVOKE.MgShapes_toHandle(swigCPtr);
+    return ret;
+  }
+
   public override MgObject clone() {
     IntPtr cPtr = touchvgPINVOKE.MgShapes_clone(swigCPtr);
     MgObject ret = (cPtr == IntPtr.Zero) ? null : new MgObject(cPtr, false);

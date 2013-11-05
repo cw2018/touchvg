@@ -66,10 +66,12 @@ public:
     GiGestureState getGestureState();   //!< 得到当前手势状态
     
     MgView* viewAdapter();              //!< 命令视图回调适配器
-    long viewAdapterHandle();           //!< 命令视图回调适配器的句柄, 可转换为 MgView 指针
     
 public:
     bool isPressDragging();
+    long viewAdapterHandle();
+    long docHandle();
+    long shapesHandle();
     const char* getCommand() const;
     bool setCommand(GiView* view, const char* name, const char* params = "");
     bool setCommand(const char* name, const char* params = "");
