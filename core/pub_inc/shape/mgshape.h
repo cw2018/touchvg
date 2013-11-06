@@ -141,7 +141,7 @@ public:
     virtual Box2d getExtent() const;
 
     //! 返回改变计数
-    virtual int getChangeCount() const;
+    virtual long getChangeCount() const;
     
     //! update() 或改变图形内容后调用
     virtual void afterChanged();

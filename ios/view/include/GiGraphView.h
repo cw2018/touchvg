@@ -56,11 +56,13 @@ class MgView;
 - (GiCoreView *)coreView;                   //!< 得到跨平台内核视图
 - (MgView *)cmdView;                        //!< 返回内核命令视图
 #endif
-- (int)cmdViewHandle;                       //!< 返回内核视图的句柄, MgView 指针
+- (long)cmdViewHandle;                      //!< 返回内核视图的句柄, MgView 指针
 
 - (UIImage *)snapshot;                      //!< 得到静态图形的快照，自动释放
 - (BOOL)savePng:(NSString *)filename;       //!< 保存静态图形的快照到PNG文件
 - (void)clearCachedData;                    //!< 释放临时数据内存
+
+- (IBAction)onContextAction:(id)sender;     //!< 上下文按钮的响应函数
 
 - (void)addDelegate:(id<GiGraphViewDelegate>)d;     //!< 增加绘图消息观察者
 - (void)removeDelegate:(id<GiGraphViewDelegate>)d;  //!< 去掉绘图消息观察者

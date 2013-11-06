@@ -106,7 +106,7 @@ GiContext* MgShapeDoc::context() { return &im->context; }
 Matrix2d& MgShapeDoc::modelTransform() { return im->xf; }
 Box2d MgShapeDoc::getPageRectW() const { return im->rectW; }
 float MgShapeDoc::getViewScale() const { return im->viewScale; }
-int MgShapeDoc::getChangeCount() const { return im->changeCount; }
+long MgShapeDoc::getChangeCount() const { return im->changeCount; }
 bool MgShapeDoc::isReadOnly() const { return im->readOnly; }
 void MgShapeDoc::setReadOnly(bool readOnly) { im->readOnly = readOnly; }
 MgLockRW* MgShapeDoc::getLockData() const { return &im->lock; }
@@ -263,7 +263,7 @@ bool MgShapeDoc::save(MgStorage* s, int startIndex) const
     s->writeFloat("viewScale", im->viewScale);
     rect = getExtent();
     s->writeFloatArray("extent", &rect.xmin, 4);
-    s->writeUInt32("count", 1);
+    s->writeUInt("count", 1);
 
     for (unsigned i = 0; i < im->layers.size(); i++) {
         ret = im->layers[i]->save(s, startIndex) || ret;
@@ -289,7 +289,7 @@ bool MgShapeDoc::load(MgShapeFactory* factory, MgStorage* s, bool addOnly)
         s->readFloatArray("zoomExtent", &im->rectW.xmin, 4);
     im->viewScale = s->readFloat("viewScale", im->viewScale);
     s->readFloatArray("extent", &rect.xmin, 4);
-    s->readUInt32("count", 0);
+    s->readInt("count", 0);
 
     for (int i = 0; i < 99; i++) {
         if (i < getLayerCount()) {

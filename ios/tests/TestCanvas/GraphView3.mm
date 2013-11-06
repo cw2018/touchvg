@@ -194,11 +194,7 @@ static int machToMs(uint64_t start)
     uint64_t start = mach_absolute_time();
     CGSize size = self.bounds.size;
     
-    if (UIGraphicsBeginImageContextWithOptions) {
-        UIGraphicsBeginImageContextWithOptions(size, self.opaque, 0);
-    } else {
-        UIGraphicsBeginImageContext(size);
-    }
+    UIGraphicsBeginImageContextWithOptions(size, self.opaque, 0);
     
     int drawTime = machToMs(start);
     NSLog(@"UIGraphicsBeginImageContext: %d ms", drawTime);

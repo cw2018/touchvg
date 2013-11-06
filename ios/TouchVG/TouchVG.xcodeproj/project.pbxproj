@@ -119,7 +119,7 @@
 		AE34CF4C17F903B4004BC88B /* gipath.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB317F903B4004BC88B /* gipath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF4D17F903B4004BC88B /* gixform.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB417F903B4004BC88B /* gixform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF4E17F903B4004BC88B /* mglog.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB517F903B4004BC88B /* mglog.h */; };
-		AE34CF4F17F903B4004BC88B /* mgvector.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB617F903B4004BC88B /* mgvector.h */; };
+		AE34CF4F17F903B4004BC88B /* mgvector.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB617F903B4004BC88B /* mgvector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF5017F903B4004BC88B /* mgbasicsp.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB817F903B4004BC88B /* mgbasicsp.h */; };
 		AE34CF5217F903B4004BC88B /* mgcomposite.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEBA17F903B4004BC88B /* mgcomposite.h */; };
 		AE34CF5317F903B4004BC88B /* mggrid.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEBB17F903B4004BC88B /* mggrid.h */; };
@@ -870,6 +870,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE34CF4F17F903B4004BC88B /* mgvector.h in Headers */,
 				AE6BCE211829CF51001FA6A6 /* mgshapeslock.h in Headers */,
 				AE34CF4C17F903B4004BC88B /* gipath.h in Headers */,
 				AE34CF4117F903B4004BC88B /* mgdef.h in Headers */,
@@ -950,7 +951,6 @@
 				AE34CF4217F903B4004BC88B /* mglnrel.h in Headers */,
 				AE34CF4417F903B4004BC88B /* mgnear.h in Headers */,
 				AE34CF4E17F903B4004BC88B /* mglog.h in Headers */,
-				AE34CF4F17F903B4004BC88B /* mgvector.h in Headers */,
 				AE34CF5017F903B4004BC88B /* mgbasicsp.h in Headers */,
 				AE34CF5217F903B4004BC88B /* mgcomposite.h in Headers */,
 				AE34CF5317F903B4004BC88B /* mggrid.h in Headers */,

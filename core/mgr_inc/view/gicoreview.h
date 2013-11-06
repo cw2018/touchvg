@@ -78,8 +78,8 @@ public:
     void clearCachedData();
     int addShapesForTest();
     int getShapeCount();
-    int getChangeCount();
-    int getDrawCount() const;
+    long getChangeCount();
+    long getDrawCount() const;
     int getSelectedShapeCount();
     int getSelectedShapeType();
     int getSelectedShapeID();

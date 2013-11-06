@@ -780,12 +780,12 @@ int GiCoreView::getShapeCount()
     return impl->doc()->getShapeCount();    // 几乎不会冲突，故不检查锁定成功否
 }
 
-int GiCoreView::getChangeCount()
+long GiCoreView::getChangeCount()
 {
     return impl->doc()->getChangeCount();
 }
 
-int GiCoreView::getDrawCount() const
+long GiCoreView::getDrawCount() const
 {
     return impl->drawCount;
 }

@@ -24,7 +24,7 @@ class GiViewAdapter;
 class GiViewAdapter : public GiView
 {
 private:
-    UIView      *_view;         //!< 静态图形视图, GiGraphView
+    GiGraphView *_view;         //!< 静态图形视图, GiGraphView
     UIView      *_dynview;      //!< 动态图形视图, IosTempView
     GiCoreView  *_coreView;     //!< 内核视图分发器
     UIImage     *_tmpshot;      //!< 用于增量绘图的临时快照
@@ -41,7 +41,7 @@ public:
         unsigned int didContentChanged:1;
     } respondsTo;
     
-    GiViewAdapter(UIView *mainView, GiCoreView *coreView);
+    GiViewAdapter(GiGraphView *mainView, GiCoreView *coreView);
     virtual ~GiViewAdapter();
     
     GiCoreView *coreView() { return _coreView; }
@@ -111,5 +111,9 @@ private:
 - (BOOL)pressHandler:(UILongPressGestureRecognizer *)sender;
 - (void)delayTap;
 - (void)dispatchTapPending;
+
+- (void)ignoreTouch:(CGPoint)pt :(UIView *)handledButton;
+- (void)redrawForDelay;
+- (void)onContextActionsDisplay:(NSMutableArray *)buttons;
 
 @end

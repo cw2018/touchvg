@@ -109,7 +109,7 @@ public:
     virtual ~SwigDirector_MgBaseShape();
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
-    virtual int getChangeCount() const;
+    virtual long getChangeCount() const;
     virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
@@ -154,7 +154,7 @@ public:
     virtual ~SwigDirector_MgBaseRect();
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
-    virtual int getChangeCount() const;
+    virtual long getChangeCount() const;
     virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
@@ -199,7 +199,7 @@ public:
     virtual ~SwigDirector_MgBaseLines();
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
-    virtual int getChangeCount() const;
+    virtual long getChangeCount() const;
     virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);
@@ -244,7 +244,7 @@ public:
     virtual ~SwigDirector_MgComposite();
     virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
-    virtual int getChangeCount() const;
+    virtual long getChangeCount() const;
     virtual void afterChanged();
     virtual void update();
     virtual void transform(Matrix2d const &mat);

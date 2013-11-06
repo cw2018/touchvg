@@ -19,7 +19,7 @@ static NSString* const IMAGENAMES[] = { nil, @"vg_selall.png", nil, @"vg_draw.pn
 
 //! Button class for showContextActions().
 @interface UIButtonAutoHide : UIButton
-@property (nonatomic,assign) id delegate;
+@property (nonatomic,assign) GiGraphView *delegate;
 @end
 
 @implementation UIButtonAutoHide
@@ -29,15 +29,14 @@ static NSString* const IMAGENAMES[] = { nil, @"vg_selall.png", nil, @"vg_draw.pn
 	BOOL ret = [super pointInside:point withEvent:event];
     CGPoint pt = [self.window convertPoint:point fromView:self];
     
-    [delegate performSelector:@selector(ignoreTouch::) withObject:[NSValue valueWithCGPoint:pt]
-                   withObject:ret ? self : nil];
+    [delegate ignoreTouch:pt :ret ? self : nil];
     
 	return ret;
 }
 
 @end
 
-GiViewAdapter::GiViewAdapter(UIView *mainView, GiCoreView *coreView)
+GiViewAdapter::GiViewAdapter(GiGraphView *mainView, GiCoreView *coreView)
 : _view(mainView), _dynview(nil), _tmpshot(nil), _drawCount(0)
 , _buttons(nil), _buttonImages(nil) {
     _coreView = new GiCoreView(coreView);
@@ -132,7 +131,7 @@ void GiViewAdapter::redraw() {
         [_dynview setNeedsDisplay];
     }
     else {
-        [_view performSelector:@selector(redraw) withObject:nil afterDelay:0.2];
+        [_view performSelector:@selector(redrawForDelay) withObject:nil afterDelay:0.2];
     }
 }
 
@@ -156,7 +155,7 @@ bool GiViewAdapter::twoFingersMove(UIGestureRecognizer *sender, int state, bool 
         pt2 = pt1;
     }
     
-    state = state < 0 ? sender.state : state;
+    state = state < 0 ? (int)sender.state : state;
     return _coreView->twoFingersMove(this, (GiGestureState)state, 
                                      pt1.x, pt1.y, pt2.x, pt2.y, switchGesture);
 }

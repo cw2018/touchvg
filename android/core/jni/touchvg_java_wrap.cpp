@@ -2054,8 +2054,8 @@ Box2d SwigDirector_MgBaseShape::getExtent() const {
   return c_result;
 }
 
-int SwigDirector_MgBaseShape::getChangeCount() const {
-  int c_result = SwigValueInit< int >() ;
+long SwigDirector_MgBaseShape::getChangeCount() const {
+  long c_result = SwigValueInit< long >() ;
   jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
@@ -2068,7 +2068,7 @@ int SwigDirector_MgBaseShape::getChangeCount() const {
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_touchvgJNI, Swig::director_methids[50], swigjobj);
     if (jenv->ExceptionCheck() == JNI_TRUE) return c_result;
-    c_result = (int)jresult; 
+    c_result = (long)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object");
   }
@@ -2922,8 +2922,8 @@ Box2d SwigDirector_MgBaseRect::getExtent() const {
   return c_result;
 }
 
-int SwigDirector_MgBaseRect::getChangeCount() const {
-  int c_result = SwigValueInit< int >() ;
+long SwigDirector_MgBaseRect::getChangeCount() const {
+  long c_result = SwigValueInit< long >() ;
   jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
@@ -2936,7 +2936,7 @@ int SwigDirector_MgBaseRect::getChangeCount() const {
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_touchvgJNI, Swig::director_methids[81], swigjobj);
     if (jenv->ExceptionCheck() == JNI_TRUE) return c_result;
-    c_result = (int)jresult; 
+    c_result = (long)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object");
   }
@@ -3789,8 +3789,8 @@ Box2d SwigDirector_MgBaseLines::getExtent() const {
   return c_result;
 }
 
-int SwigDirector_MgBaseLines::getChangeCount() const {
-  int c_result = SwigValueInit< int >() ;
+long SwigDirector_MgBaseLines::getChangeCount() const {
+  long c_result = SwigValueInit< long >() ;
   jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
@@ -3803,7 +3803,7 @@ int SwigDirector_MgBaseLines::getChangeCount() const {
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_touchvgJNI, Swig::director_methids[112], swigjobj);
     if (jenv->ExceptionCheck() == JNI_TRUE) return c_result;
-    c_result = (int)jresult; 
+    c_result = (long)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object");
   }
@@ -4657,8 +4657,8 @@ Box2d SwigDirector_MgComposite::getExtent() const {
   return c_result;
 }
 
-int SwigDirector_MgComposite::getChangeCount() const {
-  int c_result = SwigValueInit< int >() ;
+long SwigDirector_MgComposite::getChangeCount() const {
+  long c_result = SwigValueInit< long >() ;
   jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
@@ -4671,7 +4671,7 @@ int SwigDirector_MgComposite::getChangeCount() const {
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_touchvgJNI, Swig::director_methids[143], swigjobj);
     if (jenv->ExceptionCheck() == JNI_TRUE) return c_result;
-    c_result = (int)jresult; 
+    c_result = (long)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object");
   }
@@ -21050,13 +21050,13 @@ SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_MgBaseShape_1getExtentSwig
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgBaseShape_1getChangeCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   MgBaseShape *arg1 = (MgBaseShape *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(MgBaseShape **)&jarg1; 
-  result = (int)((MgBaseShape const *)arg1)->getChangeCount();
+  result = (long)((MgBaseShape const *)arg1)->getChangeCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -21065,13 +21065,13 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgBaseShape_1getChangeCount
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgBaseShape_1getChangeCountSwigExplicitMgBaseShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   MgBaseShape *arg1 = (MgBaseShape *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(MgBaseShape **)&jarg1; 
-  result = (int)((MgBaseShape const *)arg1)->MgBaseShape::getChangeCount();
+  result = (long)((MgBaseShape const *)arg1)->MgBaseShape::getChangeCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -37788,13 +37788,13 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgShapeDoc_1setPageRectW(JN
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapeDoc_1getChangeCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   MgShapeDoc *arg1 = (MgShapeDoc *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(MgShapeDoc **)&jarg1; 
-  result = (int)((MgShapeDoc const *)arg1)->getChangeCount();
+  result = (long)((MgShapeDoc const *)arg1)->getChangeCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -38471,13 +38471,13 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1getShapeCount(J
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1getChangeCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(MgCoreView **)&jarg1; 
-  result = (int)(arg1)->getChangeCount();
+  result = (long)(arg1)->getChangeCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -38486,13 +38486,13 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1getChangeCount(
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1getDrawCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(MgCoreView **)&jarg1; 
-  result = (int)((MgCoreView const *)arg1)->getDrawCount();
+  result = (long)((MgCoreView const *)arg1)->getDrawCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -39544,13 +39544,13 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1getShapeCount(J
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1getChangeCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   GiCoreView *arg1 = (GiCoreView *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(GiCoreView **)&jarg1; 
-  result = (int)(arg1)->getChangeCount();
+  result = (long)(arg1)->getChangeCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -39559,13 +39559,13 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1getChangeCount(
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1getDrawCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   GiCoreView *arg1 = (GiCoreView *) 0 ;
-  int result;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(GiCoreView **)&jarg1; 
-  result = (int)((GiCoreView const *)arg1)->getDrawCount();
+  result = (long)((GiCoreView const *)arg1)->getDrawCount();
   jresult = (jint)result; 
   return jresult;
 }

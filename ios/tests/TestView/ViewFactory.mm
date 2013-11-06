@@ -125,7 +125,7 @@ static UIView* addGraphView(NSMutableArray *arr, NSUInteger &i, NSUInteger index
     addView(arr, title, wrapview);
     [wrapview release];
     
-    if (wrapview) {
+    if (wrapview && type >= 0) {
         if (type == 0) {
             v = [[GiGraphView1 alloc]initWithFrame:wrapview.bounds];
         }
@@ -199,6 +199,7 @@ static void gatherTestView(NSMutableArray *arr, NSUInteger index, CGRect frame)
     addLargeView1(arr, i, index, @"GiGraphView SVG pages in large view", frame, 10);
     testMagnifierView(arr, i, index, @"MagnifierView", frame, 1);
     addAnimatedPathView1(arr, i, index, @"AnimatedPathView1", frame, 0);
+    addGraphView(arr, i, index, @"Empty view", frame, -1);
 }
 
 void getTestViewTitles(NSMutableArray *arr)

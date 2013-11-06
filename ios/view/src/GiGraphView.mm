@@ -143,7 +143,7 @@ GiColor CGColorToGiColor(CGColorRef color);
     return _adapter->imageCache();
 }
 
-- (int)cmdViewHandle {
+- (long)cmdViewHandle {
     return _adapter->coreView()->viewAdapterHandle();
 }
 
@@ -185,10 +185,6 @@ GiColor CGColorToGiColor(CGColorRef color);
         }
         canvas.endPaint();
     }
-}
-
-- (void)redraw {
-    _adapter->redraw();
 }
 
 - (void)clearCachedData {
@@ -349,9 +345,7 @@ GiColor CGColorToGiColor(CGColorRef color);
     [super touchesEnded:touches withEvent:event];
 }
 
-- (void)ignoreTouch:(NSValue *)pointValue :(UIView *)handledButton {
-    CGPoint pt = [self.window convertPoint:[pointValue CGPointValue] toView:self];
-    
+- (void)ignoreTouch:(CGPoint)pt :(UIView *)handledButton {
     if (handledButton) {
         _buttonHandled = YES;
     }
@@ -359,6 +353,10 @@ GiColor CGColorToGiColor(CGColorRef color);
         [self performSelector:@selector(hideContextActions) withObject:nil afterDelay:0.5];
     }
     _ignorePt = pt;
+}
+
+- (void)redrawForDelay {
+    _adapter->redraw();
 }
 
 - (void)onContextActionsDisplay:(NSMutableArray *)buttons {

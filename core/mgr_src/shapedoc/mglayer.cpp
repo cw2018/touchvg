@@ -57,12 +57,12 @@ bool MgLayer::equals(const MgObject& src) const
 
 bool MgLayer::saveExtra(MgStorage* s) const
 {
-    s->writeUInt32("flags", _flags);
+    s->writeUInt("flags", _flags);
     return true;
 }
 
 bool MgLayer::loadExtra(MgStorage* s)
 {
-    _flags = s->readUInt32("flags", _flags);
+    _flags = s->readInt("flags", _flags);
     return true;
 }

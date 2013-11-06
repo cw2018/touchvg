@@ -314,7 +314,7 @@ bool MgShapes::save(MgStorage* s, int startIndex) const
         ret = saveExtra(s);
         rect = getExtent();
         s->writeFloatArray("extent", &rect.xmin, 4);
-        s->writeUInt32("count", (int)im->shapes.size() - startIndex);
+        s->writeUInt("count", (int)im->shapes.size() - startIndex);
         
         for (I::citerator it = im->shapes.begin();
              ret && it != im->shapes.end(); ++it, ++index)
@@ -323,8 +323,8 @@ bool MgShapes::save(MgStorage* s, int startIndex) const
                 continue;
             ret = s->writeNode("shape", index - startIndex, false);
             if (ret) {
-                s->writeUInt32("type", (*it)->getType() & 0xFFFF);
-                s->writeUInt32("id", (*it)->getID());
+                s->writeUInt("type", (*it)->getType() & 0xFFFF);
+                s->writeUInt("id", (*it)->getID());
                 
                 rect = (*it)->shapec()->getExtent();
                 s->writeFloatArray("extent", &rect.xmin, 4);
@@ -351,11 +351,11 @@ bool MgShapes::load(MgShapeFactory* factory, MgStorage* s, bool addOnly)
         
         ret = loadExtra(s);
         s->readFloatArray("extent", &rect.xmin, 4);
-        s->readUInt32("count", 0);
+        s->readInt("count", 0);
         
         while (ret && s->readNode("shape", index, false)) {
-            const int type = s->readUInt32("type", 0);
-            const int id = s->readUInt32("id", 0);
+            const int type = s->readInt("type", 0);
+            const int id = s->readInt("id", 0);
             s->readFloatArray("extent", &rect.xmin, 4);
             
             MgShape* shape = addOnly && id ? findShape(id) : NULL;

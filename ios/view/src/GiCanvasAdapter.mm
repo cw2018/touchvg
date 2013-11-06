@@ -87,7 +87,7 @@ void GiCanvasAdapter::setPen(int argb, float width, int style, float phase)
     }
     
     if (style > 0 && style < 5) {
-        float pattern[6];
+        CGFloat pattern[6];
         int n = 0;
         for (; LINEDASH[style][n] > 0.1f; n++) {
             pattern[n] = LINEDASH[style][n] * (width < 1.f ? 1.f : width);

@@ -107,7 +107,7 @@ public:
     void setPageRectW(const Box2d& rectW, float viewScale);
 
     //! 返回改变计数
-    int getChangeCount() const;
+    long getChangeCount() const;
 
     //! 返回文档是否只读
     bool isReadOnly() const;
