@@ -107,13 +107,13 @@ public class GiCoreView extends MgCoreView {
     return GiGestureState.swigToEnum(touchvgJNI.GiCoreView_getGestureState(swigCPtr, this));
   }
 
+  public boolean isPressDragging() {
+    return touchvgJNI.GiCoreView_isPressDragging(swigCPtr, this);
+  }
+
   public MgView viewAdapter() {
     long cPtr = touchvgJNI.GiCoreView_viewAdapter(swigCPtr, this);
     return (cPtr == 0) ? null : new MgView(cPtr, false);
-  }
-
-  public boolean isPressDragging() {
-    return touchvgJNI.GiCoreView_isPressDragging(swigCPtr, this);
   }
 
   public int viewAdapterHandle() {

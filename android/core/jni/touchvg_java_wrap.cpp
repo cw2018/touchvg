@@ -33060,6 +33060,318 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgMotion(JNIEnv *je
 }
 
 
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1NotNotify_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)MgShapesLock::NotNotify;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1ReadOnly_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)MgShapesLock::ReadOnly;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Add_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)MgShapesLock::Add;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Remove_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)MgShapesLock::Remove;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Edit_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)MgShapesLock::Edit;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Load_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (int)MgShapesLock::Load;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jobject jarg2_, jint jarg3) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  int arg3 ;
+  MgShapesLock *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = (int)jarg1; 
+  arg2 = *(MgView **)&jarg2; 
+  arg3 = (int)jarg3; 
+  result = (MgShapesLock *)new MgShapesLock(arg1,arg2,arg3);
+  *(MgShapesLock **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  int arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  MgShapesLock *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = (int)jarg1; 
+  arg2 = *(MgView **)&jarg2; 
+  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
+  *(MgShapesLock **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  int arg2 ;
+  MgShapesLock *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
+  *(MgShapesLock **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  MgShapesLock *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (MgShapesLock *)new MgShapesLock(arg1);
+  *(MgShapesLock **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgShapesLock(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgShapesLock **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1locked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShapesLock **)&jarg1; 
+  result = (bool)((MgShapesLock const *)arg1)->locked();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1lockedForRead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (bool)MgShapesLock::lockedForRead(arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1lockedForWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (bool)MgShapesLock::lockedForWrite(arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1getEditFlags(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShapesLock **)&jarg1; 
+  result = (int)((MgShapesLock const *)arg1)->getEditFlags();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1resetEditFlags(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShapesLock **)&jarg1; 
+  (arg1)->resetEditFlags();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgDynShapeLock_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jboolean jarg1, jlong jarg2, jobject jarg2_, jint jarg3) {
+  jlong jresult = 0 ;
+  bool arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  int arg3 ;
+  MgDynShapeLock *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = jarg1 ? true : false; 
+  arg2 = *(MgView **)&jarg2; 
+  arg3 = (int)jarg3; 
+  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2,arg3);
+  *(MgDynShapeLock **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgDynShapeLock_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jboolean jarg1, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  bool arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  MgDynShapeLock *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = jarg1 ? true : false; 
+  arg2 = *(MgView **)&jarg2; 
+  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2);
+  *(MgDynShapeLock **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgDynShapeLock(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgDynShapeLock **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgDynShapeLock_1locked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgDynShapeLock **)&jarg1; 
+  result = (bool)((MgDynShapeLock const *)arg1)->locked();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgDynShapeLock_1lockedForRead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (bool)MgDynShapeLock::lockedForRead(arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgDynShapeLock_1lockedForWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (bool)MgDynShapeLock::lockedForWrite(arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgCommand(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
@@ -33697,318 +34009,6 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgCommand_1change_1ownershi
   if (director) {
     director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
   }
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1NotNotify_1get(JNIEnv *jenv, jclass jcls) {
-  jint jresult = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (int)MgShapesLock::NotNotify;
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1ReadOnly_1get(JNIEnv *jenv, jclass jcls) {
-  jint jresult = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (int)MgShapesLock::ReadOnly;
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Add_1get(JNIEnv *jenv, jclass jcls) {
-  jint jresult = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (int)MgShapesLock::Add;
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Remove_1get(JNIEnv *jenv, jclass jcls) {
-  jint jresult = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (int)MgShapesLock::Remove;
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Edit_1get(JNIEnv *jenv, jclass jcls) {
-  jint jresult = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (int)MgShapesLock::Edit;
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1Load_1get(JNIEnv *jenv, jclass jcls) {
-  jint jresult = 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (int)MgShapesLock::Load;
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jobject jarg2_, jint jarg3) {
-  jlong jresult = 0 ;
-  int arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  int arg3 ;
-  MgShapesLock *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg2_;
-  arg1 = (int)jarg1; 
-  arg2 = *(MgView **)&jarg2; 
-  arg3 = (int)jarg3; 
-  result = (MgShapesLock *)new MgShapesLock(arg1,arg2,arg3);
-  *(MgShapesLock **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jobject jarg2_) {
-  jlong jresult = 0 ;
-  int arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  MgShapesLock *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg2_;
-  arg1 = (int)jarg1; 
-  arg2 = *(MgView **)&jarg2; 
-  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
-  *(MgShapesLock **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  jlong jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  int arg2 ;
-  MgShapesLock *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  arg2 = (int)jarg2; 
-  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
-  *(MgShapesLock **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgShapesLock_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  MgShapesLock *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  result = (MgShapesLock *)new MgShapesLock(arg1);
-  *(MgShapesLock **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgShapesLock(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgShapesLock **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1locked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgShapesLock **)&jarg1; 
-  result = (bool)((MgShapesLock const *)arg1)->locked();
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1lockedForRead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  result = (bool)MgShapesLock::lockedForRead(arg1);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1lockedForWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  result = (bool)MgShapesLock::lockedForWrite(arg1);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1getEditFlags(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgShapesLock **)&jarg1; 
-  result = (int)((MgShapesLock const *)arg1)->getEditFlags();
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgShapesLock_1resetEditFlags(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgShapesLock **)&jarg1; 
-  (arg1)->resetEditFlags();
-}
-
-
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgDynShapeLock_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jboolean jarg1, jlong jarg2, jobject jarg2_, jint jarg3) {
-  jlong jresult = 0 ;
-  bool arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  int arg3 ;
-  MgDynShapeLock *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg2_;
-  arg1 = jarg1 ? true : false; 
-  arg2 = *(MgView **)&jarg2; 
-  arg3 = (int)jarg3; 
-  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2,arg3);
-  *(MgDynShapeLock **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1MgDynShapeLock_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jboolean jarg1, jlong jarg2, jobject jarg2_) {
-  jlong jresult = 0 ;
-  bool arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  MgDynShapeLock *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg2_;
-  arg1 = jarg1 ? true : false; 
-  arg2 = *(MgView **)&jarg2; 
-  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2);
-  *(MgDynShapeLock **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgDynShapeLock(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgDynShapeLock **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgDynShapeLock_1locked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgDynShapeLock **)&jarg1; 
-  result = (bool)((MgDynShapeLock const *)arg1)->locked();
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgDynShapeLock_1lockedForRead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  result = (bool)MgDynShapeLock::lockedForRead(arg1);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgDynShapeLock_1lockedForWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  result = (bool)MgDynShapeLock::lockedForWrite(arg1);
-  jresult = (jboolean)result; 
-  return jresult;
 }
 
 
@@ -38269,6 +38269,21 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1toHandle(JNIEnv
 }
 
 
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1viewAdapter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgView *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgCoreView **)&jarg1; 
+  result = (MgView *)(arg1)->viewAdapter();
+  *(MgView **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgCoreView_1viewAdapterHandle(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
@@ -39270,21 +39285,6 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1getGestureState
 }
 
 
-SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1viewAdapter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  GiCoreView *arg1 = (GiCoreView *) 0 ;
-  MgView *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(GiCoreView **)&jarg1; 
-  result = (MgView *)(arg1)->viewAdapter();
-  *(MgView **)&jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1isPressDragging(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   GiCoreView *arg1 = (GiCoreView *) 0 ;
@@ -39296,6 +39296,21 @@ SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1isPressDrag
   arg1 = *(GiCoreView **)&jarg1; 
   result = (bool)(arg1)->isPressDragging();
   jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_GiCoreView_1viewAdapter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  GiCoreView *arg1 = (GiCoreView *) 0 ;
+  MgView *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiCoreView **)&jarg1; 
+  result = (MgView *)(arg1)->viewAdapter();
+  *(MgView **)&jresult = result; 
   return jresult;
 }
 

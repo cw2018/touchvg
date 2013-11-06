@@ -4,7 +4,6 @@
 
 #include "mgshape.h"
 #include <mgstorage.h>
-#include <gicanvas.h>
 
 void MgBaseShape::copy(const MgObject& src) {
     if (src.isKindOf(Type()))
@@ -223,10 +222,10 @@ bool MgShape::draw(int mode, GiGraphics& gs, const GiContext *ctx, int segment) 
 
     rect.inflate(1 + gs.calcPenWidth(tmpctx.getLineWidth(), tmpctx.isAutoScale()) / 2);
 
-    if (gs.getCanvas()->beginShape(getID(), rect.xmin, 
+    if (gs.beginShape(getID(), rect.xmin, 
         rect.ymin, rect.width(), rect.height())) {
         ret = shapec()->draw(mode, gs, tmpctx, segment);
-        gs.getCanvas()->endShape(getID(), rect.xmin, rect.ymin);
+        gs.endShape(getID(), rect.xmin, rect.ymin);
     }
     return ret;
 }

@@ -2,10 +2,14 @@
 //! \brief 定义画布适配器类 GiCanvasAdapter
 // Copyright (c) 2012-2013, https://github.com/rhcad/touchvg
 
-#include <CoreGraphics/CoreGraphics.h>
 #include "gicanvas.h"
 
+#ifdef __OBJC__
 @class ImageCache;
+#else
+class ImageCache;
+#endif
+typedef struct CGContext *CGContextRef;
 
 //! 使用 Quartz 2D 实现的画布适配器类
 /*! \ingroup GROUP_IOS
@@ -13,7 +17,7 @@
 class GiCanvasAdapter : public GiCanvas
 {
 public:
-    GiCanvasAdapter(ImageCache *cache = nil);
+    GiCanvasAdapter(ImageCache *cache = (ImageCache *)0);
     virtual ~GiCanvasAdapter();
     
     //! 在给定上下文上开始绘制
@@ -28,7 +32,7 @@ public:
     //! 返回屏幕点密度
     static int getScreenDpi();
     
-    static const CGFloat* const LINEDASH[];     //!< 虚线定义, 0..4
+    static const float* const LINEDASH[];     //!< 虚线定义, 0..4
     static float colorPart(int argb, int byteOrder);
     
 public:

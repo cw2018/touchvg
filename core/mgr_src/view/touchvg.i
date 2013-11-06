@@ -109,6 +109,7 @@
 %include <mgsnap.h>
 %include <mgselect.h>
 %include <mgview.h>
+%include <mgshapeslock.h>
 
 %feature("director") MgCommand;
 %include <mgcmd.h>

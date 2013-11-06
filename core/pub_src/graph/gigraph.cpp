@@ -1270,3 +1270,13 @@ bool GiGraphics::drawHandle(const Point2d& pnt, int type, bool modelUnit)
     }
     return false;
 }
+
+bool GiGraphics::beginShape(int sid, float x, float y, float w, float h)
+{
+    return m_impl->canvas && m_impl->canvas->beginShape(sid, x, y, w, h);
+}
+
+void GiGraphics::endShape(int sid, float x, float y)
+{
+    m_impl->canvas->endShape(sid, x, y);
+}

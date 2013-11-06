@@ -65,10 +65,9 @@ public:
     GiGestureType getGestureType();     //!< 得到当前手势类型
     GiGestureState getGestureState();   //!< 得到当前手势状态
     
-    MgView* viewAdapter();              //!< 命令视图回调适配器
-    
 public:
     bool isPressDragging();
+    MgView* viewAdapter();
     long viewAdapterHandle();
     long docHandle();
     long shapesHandle();
@@ -109,5 +108,9 @@ private:
 
     GiCoreViewImpl* impl;
 };
+
+#ifndef DOXYGEN
+#include "gicontxt.h"
+#endif
 
 #endif // TOUCHVG_CORE_VIEWDISPATCHER_H

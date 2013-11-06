@@ -49,6 +49,7 @@
 		AE4E6F0416129337006CAA5C /* ViewFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewFactory.mm; sourceTree = "<group>"; };
 		AE53750C177D26980050CC4F /* GiGraphView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiGraphView1.h; sourceTree = "<group>"; };
 		AE53750D177D26980050CC4F /* GiGraphView1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GiGraphView1.mm; sourceTree = "<group>"; };
+		AE6BCE2B1829DC8A001FA6A6 /* mgcoreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mgcoreview.h; path = ../../output/TouchVG/mgcoreview.h; sourceTree = "<group>"; };
 		AE815F341718EDCB006BC607 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AEADC21D16EB570800484962 /* LargeView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeView1.h; sourceTree = "<group>"; };
 		AEADC21E16EB570800484962 /* LargeView1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LargeView1.mm; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		AEF6D11B1804FE91009E30CC /* TouchVG */ = {
 			isa = PBXGroup;
 			children = (
+				AE6BCE2B1829DC8A001FA6A6 /* mgcoreview.h */,
 				AEF6D11C1804FEED009E30CC /* gicanvas.h */,
 				AEF6D11D1804FEED009E30CC /* GiCanvasAdapter.h */,
 				AEF6D11E1804FEED009E30CC /* gicolor.h */,

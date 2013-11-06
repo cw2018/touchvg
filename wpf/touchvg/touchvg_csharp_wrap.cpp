@@ -24422,6 +24422,260 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_MgMotion(void * jarg1) {
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_NotNotify_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)MgShapesLock::NotNotify;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_ReadOnly_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)MgShapesLock::ReadOnly;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Add_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)MgShapesLock::Add;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Remove_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)MgShapesLock::Remove;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Edit_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)MgShapesLock::Edit;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Load_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)MgShapesLock::Load;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_0(int jarg1, void * jarg2, int jarg3) {
+  void * jresult ;
+  int arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  int arg3 ;
+  MgShapesLock *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  arg2 = (MgView *)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (MgShapesLock *)new MgShapesLock(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_1(int jarg1, void * jarg2) {
+  void * jresult ;
+  int arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  MgShapesLock *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  arg2 = (MgView *)jarg2; 
+  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_2(void * jarg1, int jarg2) {
+  void * jresult ;
+  MgView *arg1 = (MgView *) 0 ;
+  int arg2 ;
+  MgShapesLock *result = 0 ;
+  
+  arg1 = (MgView *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_3(void * jarg1) {
+  void * jresult ;
+  MgView *arg1 = (MgView *) 0 ;
+  MgShapesLock *result = 0 ;
+  
+  arg1 = (MgView *)jarg1; 
+  result = (MgShapesLock *)new MgShapesLock(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_MgShapesLock(void * jarg1) {
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  
+  arg1 = (MgShapesLock *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgShapesLock_locked(void * jarg1) {
+  unsigned int jresult ;
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  bool result;
+  
+  arg1 = (MgShapesLock *)jarg1; 
+  result = (bool)((MgShapesLock const *)arg1)->locked();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgShapesLock_lockedForRead(void * jarg1) {
+  unsigned int jresult ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  arg1 = (MgView *)jarg1; 
+  result = (bool)MgShapesLock::lockedForRead(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgShapesLock_lockedForWrite(void * jarg1) {
+  unsigned int jresult ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  arg1 = (MgView *)jarg1; 
+  result = (bool)MgShapesLock::lockedForWrite(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_getEditFlags(void * jarg1) {
+  int jresult ;
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  int result;
+  
+  arg1 = (MgShapesLock *)jarg1; 
+  result = (int)((MgShapesLock const *)arg1)->getEditFlags();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MgShapesLock_resetEditFlags(void * jarg1) {
+  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
+  
+  arg1 = (MgShapesLock *)jarg1; 
+  (arg1)->resetEditFlags();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgDynShapeLock__SWIG_0(unsigned int jarg1, void * jarg2, int jarg3) {
+  void * jresult ;
+  bool arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  int arg3 ;
+  MgDynShapeLock *result = 0 ;
+  
+  arg1 = jarg1 ? true : false; 
+  arg2 = (MgView *)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgDynShapeLock__SWIG_1(unsigned int jarg1, void * jarg2) {
+  void * jresult ;
+  bool arg1 ;
+  MgView *arg2 = (MgView *) 0 ;
+  MgDynShapeLock *result = 0 ;
+  
+  arg1 = jarg1 ? true : false; 
+  arg2 = (MgView *)jarg2; 
+  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_MgDynShapeLock(void * jarg1) {
+  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
+  
+  arg1 = (MgDynShapeLock *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgDynShapeLock_locked(void * jarg1) {
+  unsigned int jresult ;
+  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
+  bool result;
+  
+  arg1 = (MgDynShapeLock *)jarg1; 
+  result = (bool)((MgDynShapeLock const *)arg1)->locked();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgDynShapeLock_lockedForRead(void * jarg1) {
+  unsigned int jresult ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  arg1 = (MgView *)jarg1; 
+  result = (bool)MgDynShapeLock::lockedForRead(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgDynShapeLock_lockedForWrite(void * jarg1) {
+  unsigned int jresult ;
+  MgView *arg1 = (MgView *) 0 ;
+  bool result;
+  
+  arg1 = (MgView *)jarg1; 
+  result = (bool)MgDynShapeLock::lockedForWrite(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgCommand(char * jarg1) {
   void * jresult ;
   char *arg1 = (char *) 0 ;
@@ -24908,260 +25162,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_MgCommand_director_connect(void *objarg, Swig
   if (director) {
     director->swig_connect_director(callback0, callback1, callback2, callback3, callback4, callback5, callback6, callback7, callback8, callback9, callback10, callback11, callback12, callback13, callback14, callback15, callback16);
   }
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_NotNotify_get() {
-  int jresult ;
-  int result;
-  
-  result = (int)MgShapesLock::NotNotify;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_ReadOnly_get() {
-  int jresult ;
-  int result;
-  
-  result = (int)MgShapesLock::ReadOnly;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Add_get() {
-  int jresult ;
-  int result;
-  
-  result = (int)MgShapesLock::Add;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Remove_get() {
-  int jresult ;
-  int result;
-  
-  result = (int)MgShapesLock::Remove;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Edit_get() {
-  int jresult ;
-  int result;
-  
-  result = (int)MgShapesLock::Edit;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_Load_get() {
-  int jresult ;
-  int result;
-  
-  result = (int)MgShapesLock::Load;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_0(int jarg1, void * jarg2, int jarg3) {
-  void * jresult ;
-  int arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  int arg3 ;
-  MgShapesLock *result = 0 ;
-  
-  arg1 = (int)jarg1; 
-  arg2 = (MgView *)jarg2; 
-  arg3 = (int)jarg3; 
-  result = (MgShapesLock *)new MgShapesLock(arg1,arg2,arg3);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_1(int jarg1, void * jarg2) {
-  void * jresult ;
-  int arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  MgShapesLock *result = 0 ;
-  
-  arg1 = (int)jarg1; 
-  arg2 = (MgView *)jarg2; 
-  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_2(void * jarg1, int jarg2) {
-  void * jresult ;
-  MgView *arg1 = (MgView *) 0 ;
-  int arg2 ;
-  MgShapesLock *result = 0 ;
-  
-  arg1 = (MgView *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (MgShapesLock *)new MgShapesLock(arg1,arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgShapesLock__SWIG_3(void * jarg1) {
-  void * jresult ;
-  MgView *arg1 = (MgView *) 0 ;
-  MgShapesLock *result = 0 ;
-  
-  arg1 = (MgView *)jarg1; 
-  result = (MgShapesLock *)new MgShapesLock(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_MgShapesLock(void * jarg1) {
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  
-  arg1 = (MgShapesLock *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgShapesLock_locked(void * jarg1) {
-  unsigned int jresult ;
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  bool result;
-  
-  arg1 = (MgShapesLock *)jarg1; 
-  result = (bool)((MgShapesLock const *)arg1)->locked();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgShapesLock_lockedForRead(void * jarg1) {
-  unsigned int jresult ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  arg1 = (MgView *)jarg1; 
-  result = (bool)MgShapesLock::lockedForRead(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgShapesLock_lockedForWrite(void * jarg1) {
-  unsigned int jresult ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  arg1 = (MgView *)jarg1; 
-  result = (bool)MgShapesLock::lockedForWrite(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_MgShapesLock_getEditFlags(void * jarg1) {
-  int jresult ;
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  int result;
-  
-  arg1 = (MgShapesLock *)jarg1; 
-  result = (int)((MgShapesLock const *)arg1)->getEditFlags();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_MgShapesLock_resetEditFlags(void * jarg1) {
-  MgShapesLock *arg1 = (MgShapesLock *) 0 ;
-  
-  arg1 = (MgShapesLock *)jarg1; 
-  (arg1)->resetEditFlags();
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgDynShapeLock__SWIG_0(unsigned int jarg1, void * jarg2, int jarg3) {
-  void * jresult ;
-  bool arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  int arg3 ;
-  MgDynShapeLock *result = 0 ;
-  
-  arg1 = jarg1 ? true : false; 
-  arg2 = (MgView *)jarg2; 
-  arg3 = (int)jarg3; 
-  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2,arg3);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_MgDynShapeLock__SWIG_1(unsigned int jarg1, void * jarg2) {
-  void * jresult ;
-  bool arg1 ;
-  MgView *arg2 = (MgView *) 0 ;
-  MgDynShapeLock *result = 0 ;
-  
-  arg1 = jarg1 ? true : false; 
-  arg2 = (MgView *)jarg2; 
-  result = (MgDynShapeLock *)new MgDynShapeLock(arg1,arg2);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_MgDynShapeLock(void * jarg1) {
-  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
-  
-  arg1 = (MgDynShapeLock *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgDynShapeLock_locked(void * jarg1) {
-  unsigned int jresult ;
-  MgDynShapeLock *arg1 = (MgDynShapeLock *) 0 ;
-  bool result;
-  
-  arg1 = (MgDynShapeLock *)jarg1; 
-  result = (bool)((MgDynShapeLock const *)arg1)->locked();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgDynShapeLock_lockedForRead(void * jarg1) {
-  unsigned int jresult ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  arg1 = (MgView *)jarg1; 
-  result = (bool)MgDynShapeLock::lockedForRead(arg1);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgDynShapeLock_lockedForWrite(void * jarg1) {
-  unsigned int jresult ;
-  MgView *arg1 = (MgView *) 0 ;
-  bool result;
-  
-  arg1 = (MgView *)jarg1; 
-  result = (bool)MgDynShapeLock::lockedForWrite(arg1);
-  jresult = result; 
-  return jresult;
 }
 
 
@@ -28419,6 +28419,18 @@ SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_toHandle(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_MgCoreView_viewAdapter(void * jarg1) {
+  void * jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgView *result = 0 ;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  result = (MgView *)(arg1)->viewAdapter();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_viewAdapterHandle(void * jarg1) {
   long jresult ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
@@ -29183,18 +29195,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_GiCoreView_getGestureState(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_GiCoreView_viewAdapter(void * jarg1) {
-  void * jresult ;
-  GiCoreView *arg1 = (GiCoreView *) 0 ;
-  MgView *result = 0 ;
-  
-  arg1 = (GiCoreView *)jarg1; 
-  result = (MgView *)(arg1)->viewAdapter();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_GiCoreView_isPressDragging(void * jarg1) {
   unsigned int jresult ;
   GiCoreView *arg1 = (GiCoreView *) 0 ;
@@ -29203,6 +29203,18 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_GiCoreView_isPressDragging(void * jar
   arg1 = (GiCoreView *)jarg1; 
   result = (bool)(arg1)->isPressDragging();
   jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_GiCoreView_viewAdapter(void * jarg1) {
+  void * jresult ;
+  GiCoreView *arg1 = (GiCoreView *) 0 ;
+  MgView *result = 0 ;
+  
+  arg1 = (GiCoreView *)jarg1; 
+  result = (MgView *)(arg1)->viewAdapter();
+  jresult = (void *)result; 
   return jresult;
 }
 

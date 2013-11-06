@@ -4,13 +4,14 @@
 
 #import "ImageCache.h"
 #include "GiCanvasAdapter.h"
+#include <CoreGraphics/CoreGraphics.h>
 #include <sys/sysctl.h>
 
-static const CGFloat patDash[]      = { 4, 2, 0 };
-static const CGFloat patDot[]       = { 1, 2, 0 };
-static const CGFloat patDashDot[]   = { 10, 2, 2, 2, 0 };
-static const CGFloat dashDotdot[]   = { 20, 2, 2, 2, 2, 2, 0 };
-const CGFloat* const GiCanvasAdapter::LINEDASH[] = { NULL, patDash, patDot, patDashDot, dashDotdot };
+static const float patDash[]      = { 4, 2, 0 };
+static const float patDot[]       = { 1, 2, 0 };
+static const float patDashDot[]   = { 10, 2, 2, 2, 0 };
+static const float dashDotdot[]   = { 20, 2, 2, 2, 2, 2, 0 };
+const float* const GiCanvasAdapter::LINEDASH[] = { NULL, patDash, patDot, patDashDot, dashDotdot };
 
 int GiCanvasAdapter::getScreenDpi()
 {
@@ -86,7 +87,7 @@ void GiCanvasAdapter::setPen(int argb, float width, int style, float phase)
     }
     
     if (style > 0 && style < 5) {
-        CGFloat pattern[6];
+        float pattern[6];
         int n = 0;
         for (; LINEDASH[style][n] > 0.1f; n++) {
             pattern[n] = LINEDASH[style][n] * (width < 1.f ? 1.f : width);

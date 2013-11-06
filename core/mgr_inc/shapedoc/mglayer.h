@@ -27,9 +27,9 @@ public:
     
     MgShapeDoc* doc() const;            //!< 返回所属文档对象
     
-    bool isHided() const { return _bits.hided; }            //!< 返回图层是否隐藏
+    bool isHided() const { return !!_bits.hided; }          //!< 返回图层是否隐藏
     void setHided(bool hided) { _bits.hided = hided; }      //!< 设置图层是否隐藏
-    bool isLocked() const { return _bits.locked; }          //!< 返回图层是否锁定
+    bool isLocked() const { return !!_bits.locked; }        //!< 返回图层是否锁定
     void setLocked(bool locked) { _bits.locked = locked; }  //!< 设置图层是否锁定
     
 public:
