@@ -141,13 +141,18 @@ public class MgCoreView : IDisposable {
     touchvgPINVOKE.MgCoreView_clear(swigCPtr);
   }
 
+  public virtual bool loadFromFile(string vgfile, bool readOnly, bool needLock) {
+    bool ret = touchvgPINVOKE.MgCoreView_loadFromFile__SWIG_0(swigCPtr, vgfile, readOnly, needLock);
+    return ret;
+  }
+
   public virtual bool loadFromFile(string vgfile, bool readOnly) {
-    bool ret = touchvgPINVOKE.MgCoreView_loadFromFile__SWIG_0(swigCPtr, vgfile, readOnly);
+    bool ret = touchvgPINVOKE.MgCoreView_loadFromFile__SWIG_1(swigCPtr, vgfile, readOnly);
     return ret;
   }
 
   public virtual bool loadFromFile(string vgfile) {
-    bool ret = touchvgPINVOKE.MgCoreView_loadFromFile__SWIG_1(swigCPtr, vgfile);
+    bool ret = touchvgPINVOKE.MgCoreView_loadFromFile__SWIG_2(swigCPtr, vgfile);
     return ret;
   }
 
@@ -158,6 +163,31 @@ public class MgCoreView : IDisposable {
 
   public virtual bool saveToFile(string vgfile) {
     bool ret = touchvgPINVOKE.MgCoreView_saveToFile__SWIG_1(swigCPtr, vgfile);
+    return ret;
+  }
+
+  public virtual bool loadShapes(MgStorage s, bool readOnly, bool needLock) {
+    bool ret = touchvgPINVOKE.MgCoreView_loadShapes__SWIG_0(swigCPtr, MgStorage.getCPtr(s), readOnly, needLock);
+    return ret;
+  }
+
+  public virtual bool loadShapes(MgStorage s, bool readOnly) {
+    bool ret = touchvgPINVOKE.MgCoreView_loadShapes__SWIG_1(swigCPtr, MgStorage.getCPtr(s), readOnly);
+    return ret;
+  }
+
+  public virtual bool loadShapes(MgStorage s) {
+    bool ret = touchvgPINVOKE.MgCoreView_loadShapes__SWIG_2(swigCPtr, MgStorage.getCPtr(s));
+    return ret;
+  }
+
+  public virtual bool saveShapes(MgStorage s) {
+    bool ret = touchvgPINVOKE.MgCoreView_saveShapes(swigCPtr, MgStorage.getCPtr(s));
+    return ret;
+  }
+
+  public virtual bool loadDynamicShapes(MgStorage s) {
+    bool ret = touchvgPINVOKE.MgCoreView_loadDynamicShapes(swigCPtr, MgStorage.getCPtr(s));
     return ret;
   }
 

@@ -52,6 +52,12 @@ public class MgView : IDisposable {
     return ret;
   }
 
+  public virtual MgMotion motion() {
+    IntPtr cPtr = touchvgPINVOKE.MgView_motion(swigCPtr);
+    MgMotion ret = (cPtr == IntPtr.Zero) ? null : new MgMotion(cPtr, false);
+    return ret;
+  }
+
   public virtual MgCmdManager cmds() {
     IntPtr cPtr = touchvgPINVOKE.MgView_cmds(swigCPtr);
     MgCmdManager ret = (cPtr == IntPtr.Zero) ? null : new MgCmdManager(cPtr, false);
@@ -198,6 +204,10 @@ public class MgView : IDisposable {
 
   public virtual void selectionChanged() {
     touchvgPINVOKE.MgView_selectionChanged(swigCPtr);
+  }
+
+  public virtual void dynamicChanged() {
+    touchvgPINVOKE.MgView_dynamicChanged(swigCPtr);
   }
 
   public virtual bool shapeWillAdded(MgShape shape) {

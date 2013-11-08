@@ -313,16 +313,34 @@ class democmdsPINVOKE {
   public static extern void MgCoreView_clear(HandleRef jarg1);
 
   [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadFromFile__SWIG_0")]
-  public static extern bool MgCoreView_loadFromFile__SWIG_0(HandleRef jarg1, string jarg2, bool jarg3);
+  public static extern bool MgCoreView_loadFromFile__SWIG_0(HandleRef jarg1, string jarg2, bool jarg3, bool jarg4);
 
   [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadFromFile__SWIG_1")]
-  public static extern bool MgCoreView_loadFromFile__SWIG_1(HandleRef jarg1, string jarg2);
+  public static extern bool MgCoreView_loadFromFile__SWIG_1(HandleRef jarg1, string jarg2, bool jarg3);
+
+  [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadFromFile__SWIG_2")]
+  public static extern bool MgCoreView_loadFromFile__SWIG_2(HandleRef jarg1, string jarg2);
 
   [DllImport("democmds", EntryPoint="CSharp_MgCoreView_saveToFile__SWIG_0")]
   public static extern bool MgCoreView_saveToFile__SWIG_0(HandleRef jarg1, string jarg2, bool jarg3);
 
   [DllImport("democmds", EntryPoint="CSharp_MgCoreView_saveToFile__SWIG_1")]
   public static extern bool MgCoreView_saveToFile__SWIG_1(HandleRef jarg1, string jarg2);
+
+  [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadShapes__SWIG_0")]
+  public static extern bool MgCoreView_loadShapes__SWIG_0(HandleRef jarg1, HandleRef jarg2, bool jarg3, bool jarg4);
+
+  [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadShapes__SWIG_1")]
+  public static extern bool MgCoreView_loadShapes__SWIG_1(HandleRef jarg1, HandleRef jarg2, bool jarg3);
+
+  [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadShapes__SWIG_2")]
+  public static extern bool MgCoreView_loadShapes__SWIG_2(HandleRef jarg1, HandleRef jarg2);
+
+  [DllImport("democmds", EntryPoint="CSharp_MgCoreView_saveShapes")]
+  public static extern bool MgCoreView_saveShapes(HandleRef jarg1, HandleRef jarg2);
+
+  [DllImport("democmds", EntryPoint="CSharp_MgCoreView_loadDynamicShapes")]
+  public static extern bool MgCoreView_loadDynamicShapes(HandleRef jarg1, HandleRef jarg2);
 
   [DllImport("democmds", EntryPoint="CSharp_MgCoreView_getContent")]
   public static extern string MgCoreView_getContent(HandleRef jarg1);

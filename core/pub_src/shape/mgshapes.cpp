@@ -16,6 +16,7 @@ struct MgShapes::I
     Container   shapes;
     MgObject*   owner;
     int         index;
+    int         newShapeID;
     
     MgShape* findShape(int sid) const;
     int getNewID(int sid);
@@ -31,6 +32,7 @@ MgShapes::MgShapes(MgObject* owner, int index)
     im = new I();
     im->owner = owner;
     im->index = index;
+    im->newShapeID = 1;
 }
 
 MgShapes::~MgShapes()
@@ -94,6 +96,11 @@ void MgShapes::clearCachedData()
 MgObject* MgShapes::getOwner() const
 {
     return this ? im->owner : NULL;
+}
+
+int MgShapes::getIndex() const
+{
+    return im->index;
 }
 
 MgShape* MgShapes::addShape(const MgShape& src)
@@ -321,19 +328,27 @@ bool MgShapes::save(MgStorage* s, int startIndex) const
         {
             if (index < startIndex)
                 continue;
-            ret = s->writeNode("shape", index - startIndex, false);
-            if (ret) {
-                s->writeUInt("type", (*it)->getType() & 0xFFFF);
-                s->writeUInt("id", (*it)->getID());
-                
-                rect = (*it)->shapec()->getExtent();
-                s->writeFloatArray("extent", &rect.xmin, 4);
-                
-                ret = (*it)->save(s);
-                s->writeNode("shape", index - startIndex, true);
-            }
+            ret = saveShape(s, *it, index - startIndex);
         }
         s->writeNode("shapes", im->index, true);
+    }
+    
+    return ret;
+}
+
+bool MgShapes::saveShape(MgStorage* s, MgShape* shape, int index) const
+{
+    bool ret = s->writeNode("shape", index, false);
+    
+    if (ret) {
+        s->writeUInt("type", shape->getType() & 0xFFFF);
+        s->writeUInt("id", shape->getID());
+        
+        Box2d rect(shape->shapec()->getExtent());
+        s->writeFloatArray("extent", &rect.xmin, 4);
+        
+        ret = shape->save(s);
+        s->writeNode("shape", index, true);
     }
     
     return ret;
@@ -350,7 +365,7 @@ bool MgShapes::load(MgShapeFactory* factory, MgStorage* s, bool addOnly)
             clear();
         
         ret = loadExtra(s);
-        s->readFloatArray("extent", &rect.xmin, 4);
+        //s->readFloatArray("extent", &rect.xmin, 4);
         s->readInt("count", 0);
         
         while (ret && s->readNode("shape", index, false)) {
@@ -389,6 +404,11 @@ bool MgShapes::load(MgShapeFactory* factory, MgStorage* s, bool addOnly)
     return ret;
 }
 
+void MgShapes::setNewShapeID(int sid)
+{
+    im->newShapeID = sid;
+}
+
 MgShape* MgShapes::I::findShape(int sid) const
 {
     if (!this || 0 == sid)
@@ -403,8 +423,8 @@ MgShape* MgShapes::I::findShape(int sid) const
 int MgShapes::I::getNewID(int sid)
 {
     if (0 == sid || findShape(sid)) {
-        sid = 1;
-        if (!shapes.empty())
+        sid = newShapeID;
+        if (findShape(sid))
             sid = shapes.back()->getID() + 1;
         while (findShape(sid))
             sid++;

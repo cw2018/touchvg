@@ -204,6 +204,10 @@ GiColor CGColorToGiColor(CGColorRef color);
     self.userInteractionEnabled = enabled;
 }
 
+- (UIView *)dynamicShapeView {
+    return _adapter->getDynView();
+}
+
 - (void)activiteView {
     if (_activeGraphView != self) {
         _activeGraphView = self;

@@ -299,12 +299,13 @@ public:
     virtual bool isDrawingCommand();
     virtual bool isFloatingCommand();
     virtual bool doContextAction(MgMotion const *sender, int action);
+    virtual MgShape *getShape(MgMotion const *sender);
 public:
     bool swig_overrides(int n) {
-      return (n < 17 ? swig_override[n] : false);
+      return (n < 18 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[17];
+    bool swig_override[18];
 };
 
 class SwigDirector_CmdObserverDefault : public CmdObserverDefault, public Swig::Director {
@@ -364,6 +365,7 @@ public:
     virtual bool isDrawingCommand();
     virtual bool isFloatingCommand();
     virtual bool doContextAction(MgMotion const *sender, int action);
+    virtual MgShape *getShape(MgMotion const *arg0);
     virtual int getShapeType();
     virtual int getMaxStep();
     virtual int getMaxStepSwigPublic() {
@@ -375,10 +377,10 @@ public:
     }
 public:
     bool swig_overrides(int n) {
-      return (n < 20 ? swig_override[n] : false);
+      return (n < 21 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[20];
+    bool swig_override[21];
 };
 
 class SwigDirector_MgCmdDrawRect : public MgCmdDrawRect, public Swig::Director {
@@ -404,6 +406,7 @@ public:
     virtual bool isDrawingCommand();
     virtual bool isFloatingCommand();
     virtual bool doContextAction(MgMotion const *sender, int action);
+    virtual MgShape *getShape(MgMotion const *arg0);
     virtual int getShapeType();
     virtual int getMaxStep();
     virtual int getMaxStepSwigPublic() {
@@ -419,10 +422,10 @@ public:
     }
 public:
     bool swig_overrides(int n) {
-      return (n < 21 ? swig_override[n] : false);
+      return (n < 22 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[21];
+    bool swig_override[22];
 };
 
 class SwigDirector_GiView : public GiView, public Swig::Director {
@@ -440,12 +443,13 @@ public:
     virtual void commandChanged();
     virtual void selectionChanged();
     virtual void contentChanged();
+    virtual void dynamicChanged();
 public:
     bool swig_overrides(int n) {
-      return (n < 9 ? swig_override[n] : false);
+      return (n < 10 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[9];
+    bool swig_override[10];
 };
 
 

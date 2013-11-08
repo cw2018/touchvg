@@ -36,7 +36,7 @@ GiColor CGColorToGiColor(CGColorRef color) {
 
 - (id)init:(GiGraphView *)view {
     self = [super init];
-    _view = view;
+    _view = view ? view : [GiGraphView activeView];
     return self;
 }
 

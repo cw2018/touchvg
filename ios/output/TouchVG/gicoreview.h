@@ -12,7 +12,6 @@
 class GiCanvas;
 class GiCoreViewImpl;
 class MgView;
-struct MgStorage;
 
 //! 内核视图分发器类
 /*! 本对象拥有图形文档对象，负责显示和手势动作的分发。
@@ -84,8 +83,11 @@ public:
     int getSelectedShapeType();
     int getSelectedShapeID();
     void clear();
-    bool loadFromFile(const char* vgfile, bool readOnly = false);
+    bool loadFromFile(const char* vgfile, bool readOnly = false, bool needLock = true);
     bool saveToFile(const char* vgfile, bool pretty = true);
+    bool loadShapes(MgStorage* s, bool readOnly = false, bool needLock = true);
+    bool saveShapes(MgStorage* s);
+    bool loadDynamicShapes(MgStorage* s);
     const char* getContent();
     void freeContent();
     bool setContent(const char* content);
@@ -103,9 +105,6 @@ public:
     bool getBoundingBox(mgvector<float>& box, int shapeId);
 
 private:
-    bool loadShapes(MgStorage* s, bool readOnly = false);
-    bool saveShapes(MgStorage* s);
-
     GiCoreViewImpl* impl;
 };
 

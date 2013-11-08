@@ -706,25 +706,25 @@ SWIGEXPORT int SWIGSTDCALL CSharp_MgCoreView_getShapeCount(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_MgCoreView_getChangeCount(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_getChangeCount(void * jarg1) {
+  long jresult ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
-  int result;
+  long result;
   
   arg1 = (MgCoreView *)jarg1; 
-  result = (int)(arg1)->getChangeCount();
+  result = (long)(arg1)->getChangeCount();
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_MgCoreView_getDrawCount(void * jarg1) {
-  int jresult ;
+SWIGEXPORT long SWIGSTDCALL CSharp_MgCoreView_getDrawCount(void * jarg1) {
+  long jresult ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
-  int result;
+  long result;
   
   arg1 = (MgCoreView *)jarg1; 
-  result = (int)((MgCoreView const *)arg1)->getDrawCount();
+  result = (long)((MgCoreView const *)arg1)->getDrawCount();
   jresult = result; 
   return jresult;
 }
@@ -774,7 +774,25 @@ SWIGEXPORT void SWIGSTDCALL CSharp_MgCoreView_clear(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadFromFile__SWIG_0(void * jarg1, char * jarg2, unsigned int jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadFromFile__SWIG_0(void * jarg1, char * jarg2, unsigned int jarg3, unsigned int jarg4) {
+  unsigned int jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  bool result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  arg2 = (char *)jarg2; 
+  arg3 = jarg3 ? true : false; 
+  arg4 = jarg4 ? true : false; 
+  result = (bool)(arg1)->loadFromFile((char const *)arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadFromFile__SWIG_1(void * jarg1, char * jarg2, unsigned int jarg3) {
   unsigned int jresult ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -790,7 +808,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadFromFile__SWIG_0(void 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadFromFile__SWIG_1(void * jarg1, char * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadFromFile__SWIG_2(void * jarg1, char * jarg2) {
   unsigned int jresult ;
   MgCoreView *arg1 = (MgCoreView *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -829,6 +847,82 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_saveToFile__SWIG_1(void * 
   arg1 = (MgCoreView *)jarg1; 
   arg2 = (char *)jarg2; 
   result = (bool)(arg1)->saveToFile((char const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadShapes__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3, unsigned int jarg4) {
+  unsigned int jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgStorage *arg2 = (MgStorage *) 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  bool result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  arg2 = (MgStorage *)jarg2; 
+  arg3 = jarg3 ? true : false; 
+  arg4 = jarg4 ? true : false; 
+  result = (bool)(arg1)->loadShapes(arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadShapes__SWIG_1(void * jarg1, void * jarg2, unsigned int jarg3) {
+  unsigned int jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgStorage *arg2 = (MgStorage *) 0 ;
+  bool arg3 ;
+  bool result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  arg2 = (MgStorage *)jarg2; 
+  arg3 = jarg3 ? true : false; 
+  result = (bool)(arg1)->loadShapes(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadShapes__SWIG_2(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgStorage *arg2 = (MgStorage *) 0 ;
+  bool result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  arg2 = (MgStorage *)jarg2; 
+  result = (bool)(arg1)->loadShapes(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_saveShapes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgStorage *arg2 = (MgStorage *) 0 ;
+  bool result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  arg2 = (MgStorage *)jarg2; 
+  result = (bool)(arg1)->saveShapes(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MgCoreView_loadDynamicShapes(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  MgStorage *arg2 = (MgStorage *) 0 ;
+  bool result;
+  
+  arg1 = (MgCoreView *)jarg1; 
+  arg2 = (MgStorage *)jarg2; 
+  result = (bool)(arg1)->loadDynamicShapes(arg2);
   jresult = result; 
   return jresult;
 }

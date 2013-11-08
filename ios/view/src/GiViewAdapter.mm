@@ -277,3 +277,11 @@ void GiViewAdapter::contentChanged() {
         }
     }
 }
+
+void GiViewAdapter::dynamicChanged() {
+    for (size_t i = 0; i < delegates.size() && respondsTo.didDynamicChanged; i++) {
+        if ([delegates[i] respondsToSelector:@selector(onDynamicChanged:)]) {
+            [delegates[i] onDynamicChanged:_view];
+        }
+    }
+}

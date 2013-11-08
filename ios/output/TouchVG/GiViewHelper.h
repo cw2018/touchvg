@@ -14,13 +14,13 @@
     GiGraphView *_view;
 }
 
-+ (id)instance:(GiGraphView *)view;                 //!< 创建一个自动释放的本类对象
++ (id)instance:(GiGraphView *)view;                 //!< 创建一个自动释放的本类对象，传入nil时取当前绘图视图
 
 + (GiGraphView *)activeView;                        //!< 得到当前激活的绘图视图
 - (GiGraphView *)createGraphView:(CGRect)frame :(UIView *)parentView;   //!< 创建普通图形视图，并记到本类
 - (GiGraphView *)createMagnifierView:(CGRect)frame refView:(GiGraphView *)refView
                            parentView:(UIView *)parentView;  //!< 创建放大镜视图(不需要额外释放)，并记到本类
-- (long)cmdViewHandle;                               //!< 返回内核视图的句柄, MgView 指针
+- (long)cmdViewHandle;                              //!< 返回内核视图的句柄, MgView 指针
 
 @property(nonatomic, assign) NSString   *command;   //!< 当前命令名称
 @property (nonatomic)         float     lineWidth;  //!< 线宽，正数表示毫米单位，零表示1像素宽，负数表示像素单位
@@ -42,6 +42,8 @@
 - (BOOL)loadFromFile:(NSString *)vgfile readOnly:(BOOL)r;   //!< 从JSON文件中加载图形，自动改后缀名为.vg
 - (BOOL)loadFromFile:(NSString *)vgfile;    //!< 从JSON文件中加载图形，自动改后缀名为.vg
 - (BOOL)saveToFile:(NSString *)vgfile;      //!< 保存图形到JSON文件，自动改后缀名为.vg
+- (void)clearShapes;                        //!< 清除所有图形
+
 - (UIImage *)snapshot;                      //!< 得到静态图形的快照，自动释放
 - (BOOL)savePng:(NSString *)filename;       //!< 保存静态图形的快照到PNG文件，自动改后缀名为.png
 - (BOOL)exportSVG:(NSString *)filename;     //!< 导出静态图形到SVG文件，自动改后缀名为.svg

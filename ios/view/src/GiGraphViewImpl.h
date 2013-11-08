@@ -39,6 +39,7 @@ public:
         unsigned int didCommandChanged:1;
         unsigned int didSelectionChanged:1;
         unsigned int didContentChanged:1;
+        unsigned int didDynamicChanged:1;
     } respondsTo;
     
     GiViewAdapter(GiGraphView *mainView, GiCoreView *coreView);
@@ -63,6 +64,7 @@ public:
     virtual void commandChanged();
     virtual void selectionChanged();
     virtual void contentChanged();
+    virtual void dynamicChanged();
     
     bool dispatchGesture(GiGestureType gestureType, GiGestureState gestureState, CGPoint pt);
     bool dispatchPan(GiGestureState gestureState, CGPoint pt, bool switchGesture = false);

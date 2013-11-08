@@ -9,6 +9,7 @@
 
 class GiContext;
 class MgView;
+struct MgStorage;
 
 //! 内核视图接口
 /*! \ingroup CORE_VIEW
@@ -58,10 +59,19 @@ struct MgCoreView
     virtual void clear() = 0;
 
     //! 从JSON文件中加载图形
-    virtual bool loadFromFile(const char* vgfile, bool readOnly = false) = 0;
+    virtual bool loadFromFile(const char* vgfile, bool readOnly = false, bool needLock = true) = 0;
     
     //! 保存图形到JSON文件
     virtual bool saveToFile(const char* vgfile, bool pretty = true) = 0;
+    
+    //! 从数据源中加载图形
+    virtual bool loadShapes(MgStorage* s, bool readOnly = false, bool needLock = true) = 0;
+    
+    //! 保存图形到数据源
+    virtual bool saveShapes(MgStorage* s) = 0;
+    
+    //! 从数据源中加载临时图形，s为空则清除
+    virtual bool loadDynamicShapes(MgStorage* s) = 0;
 
     //! 得到图形的JSON内容，需要再调用 freeContent()
     virtual const char* getContent() = 0;

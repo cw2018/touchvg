@@ -86,6 +86,10 @@ public class GiView {
     if (getClass() == GiView.class) touchvgJNI.GiView_contentChanged(swigCPtr, this); else touchvgJNI.GiView_contentChangedSwigExplicitGiView(swigCPtr, this);
   }
 
+  public void dynamicChanged() {
+    if (getClass() == GiView.class) touchvgJNI.GiView_dynamicChanged(swigCPtr, this); else touchvgJNI.GiView_dynamicChangedSwigExplicitGiView(swigCPtr, this);
+  }
+
   public GiView() {
     this(touchvgJNI.new_GiView(), true);
     touchvgJNI.GiView_director_connect(this, swigCPtr, swigCMemOwn, true);

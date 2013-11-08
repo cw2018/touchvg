@@ -34,7 +34,7 @@
 		AE34CEF717F903B4004BC88B /* mgdrawtriang.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE4917F903B4004BC88B /* mgdrawtriang.h */; };
 		AE34CEF817F903B4004BC88B /* mgcmdmgr.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE4B17F903B4004BC88B /* mgcmdmgr.h */; };
 		AE34CEF917F903B4004BC88B /* mgcmdmgrfactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE4C17F903B4004BC88B /* mgcmdmgrfactory.h */; };
-		AE34CEFA17F903B4004BC88B /* mgjsonstorage.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE4E17F903B4004BC88B /* mgjsonstorage.h */; };
+		AE34CEFA17F903B4004BC88B /* mgjsonstorage.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE4E17F903B4004BC88B /* mgjsonstorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CEFB17F903B4004BC88B /* mglayer.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE5017F903B4004BC88B /* mglayer.h */; };
 		AE34CEFC17F903B4004BC88B /* mgshapedoc.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE5117F903B4004BC88B /* mgshapedoc.h */; };
 		AE34CEFD17F903B4004BC88B /* RandomShape.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE5317F903B4004BC88B /* RandomShape.h */; };
@@ -91,11 +91,11 @@
 		AE34CF3017F903B4004BC88B /* gicoreview.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE34CE9017F903B4004BC88B /* gicoreview.cpp */; };
 		AE34CF3117F903B4004BC88B /* gicanvas.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9317F903B4004BC88B /* gicanvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF3217F903B4004BC88B /* mgaction.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9517F903B4004BC88B /* mgaction.h */; };
-		AE34CF3317F903B4004BC88B /* mgcmd.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9617F903B4004BC88B /* mgcmd.h */; };
+		AE34CF3317F903B4004BC88B /* mgcmd.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9617F903B4004BC88B /* mgcmd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF3417F903B4004BC88B /* mglockdata.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9717F903B4004BC88B /* mglockdata.h */; };
 		AE34CF3517F903B4004BC88B /* mgselect.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9817F903B4004BC88B /* mgselect.h */; };
 		AE34CF3617F903B4004BC88B /* mgsnap.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9917F903B4004BC88B /* mgsnap.h */; };
-		AE34CF3717F903B4004BC88B /* mgview.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9A17F903B4004BC88B /* mgview.h */; };
+		AE34CF3717F903B4004BC88B /* mgview.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9A17F903B4004BC88B /* mgview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF3817F903B4004BC88B /* mgcmddraw.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9C17F903B4004BC88B /* mgcmddraw.h */; };
 		AE34CF3917F903B4004BC88B /* mgdrawarc.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9D17F903B4004BC88B /* mgdrawarc.h */; };
 		AE34CF3A17F903B4004BC88B /* mgdrawrect.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CE9E17F903B4004BC88B /* mgdrawrect.h */; };
@@ -118,7 +118,7 @@
 		AE34CF4B17F903B4004BC88B /* gilock.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB217F903B4004BC88B /* gilock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF4C17F903B4004BC88B /* gipath.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB317F903B4004BC88B /* gipath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF4D17F903B4004BC88B /* gixform.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB417F903B4004BC88B /* gixform.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AE34CF4E17F903B4004BC88B /* mglog.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB517F903B4004BC88B /* mglog.h */; };
+		AE34CF4E17F903B4004BC88B /* mglog.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB517F903B4004BC88B /* mglog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF4F17F903B4004BC88B /* mgvector.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB617F903B4004BC88B /* mgvector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF5017F903B4004BC88B /* mgbasicsp.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEB817F903B4004BC88B /* mgbasicsp.h */; };
 		AE34CF5217F903B4004BC88B /* mgcomposite.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEBA17F903B4004BC88B /* mgcomposite.h */; };
@@ -130,7 +130,7 @@
 		AE34CF5817F903B4004BC88B /* mgshapet.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEC017F903B4004BC88B /* mgshapet.h */; };
 		AE34CF5917F903B4004BC88B /* mgshapetype.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEC117F903B4004BC88B /* mgshapetype.h */; };
 		AE34CF5A17F903B4004BC88B /* mgspfactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEC217F903B4004BC88B /* mgspfactory.h */; };
-		AE34CF5B17F903B4004BC88B /* mgstorage.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEC417F903B4004BC88B /* mgstorage.h */; };
+		AE34CF5B17F903B4004BC88B /* mgstorage.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEC417F903B4004BC88B /* mgstorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE34CF5C17F903B4004BC88B /* mgstoragebs.h in Headers */ = {isa = PBXBuildFile; fileRef = AE34CEC517F903B4004BC88B /* mgstoragebs.h */; };
 		AE34CF5D17F903B4004BC88B /* mgcmddraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE34CEC817F903B4004BC88B /* mgcmddraw.cpp */; };
 		AE34CF5E17F903B4004BC88B /* mgdrawarc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE34CEC917F903B4004BC88B /* mgdrawarc.cpp */; };
@@ -870,6 +870,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE34CF3317F903B4004BC88B /* mgcmd.h in Headers */,
+				AE34CF3717F903B4004BC88B /* mgview.h in Headers */,
+				AE34CF4E17F903B4004BC88B /* mglog.h in Headers */,
+				AE34CEFA17F903B4004BC88B /* mgjsonstorage.h in Headers */,
+				AE34CF5B17F903B4004BC88B /* mgstorage.h in Headers */,
 				AE34CF4F17F903B4004BC88B /* mgvector.h in Headers */,
 				AE6BCE211829CF51001FA6A6 /* mgshapeslock.h in Headers */,
 				AE34CF4C17F903B4004BC88B /* gipath.h in Headers */,
@@ -912,7 +917,6 @@
 				AE34CEF717F903B4004BC88B /* mgdrawtriang.h in Headers */,
 				AE34CEF817F903B4004BC88B /* mgcmdmgr.h in Headers */,
 				AE34CEF917F903B4004BC88B /* mgcmdmgrfactory.h in Headers */,
-				AE34CEFA17F903B4004BC88B /* mgjsonstorage.h in Headers */,
 				AE34CEFB17F903B4004BC88B /* mglayer.h in Headers */,
 				AE34CEFC17F903B4004BC88B /* mgshapedoc.h in Headers */,
 				AE34CEFD17F903B4004BC88B /* RandomShape.h in Headers */,
@@ -935,11 +939,9 @@
 				AE34CF2D17F903B4004BC88B /* GcMagnifierView.h in Headers */,
 				AE34CF2F17F903B4004BC88B /* GcShapeDoc.h in Headers */,
 				AE34CF3217F903B4004BC88B /* mgaction.h in Headers */,
-				AE34CF3317F903B4004BC88B /* mgcmd.h in Headers */,
 				AE34CF3417F903B4004BC88B /* mglockdata.h in Headers */,
 				AE34CF3517F903B4004BC88B /* mgselect.h in Headers */,
 				AE34CF3617F903B4004BC88B /* mgsnap.h in Headers */,
-				AE34CF3717F903B4004BC88B /* mgview.h in Headers */,
 				AE34CF3817F903B4004BC88B /* mgcmddraw.h in Headers */,
 				AE34CF3917F903B4004BC88B /* mgdrawarc.h in Headers */,
 				AE34CF3A17F903B4004BC88B /* mgdrawrect.h in Headers */,
@@ -950,7 +952,6 @@
 				AE34CF4017F903B4004BC88B /* mgcurv.h in Headers */,
 				AE34CF4217F903B4004BC88B /* mglnrel.h in Headers */,
 				AE34CF4417F903B4004BC88B /* mgnear.h in Headers */,
-				AE34CF4E17F903B4004BC88B /* mglog.h in Headers */,
 				AE34CF5017F903B4004BC88B /* mgbasicsp.h in Headers */,
 				AE34CF5217F903B4004BC88B /* mgcomposite.h in Headers */,
 				AE34CF5317F903B4004BC88B /* mggrid.h in Headers */,
@@ -958,7 +959,6 @@
 				AE34CF5817F903B4004BC88B /* mgshapet.h in Headers */,
 				AE34CF5917F903B4004BC88B /* mgshapetype.h in Headers */,
 				AE34CF5A17F903B4004BC88B /* mgspfactory.h in Headers */,
-				AE34CF5B17F903B4004BC88B /* mgstorage.h in Headers */,
 				AE34CF5C17F903B4004BC88B /* mgstoragebs.h in Headers */,
 				AE34CF6517F903B4004BC88B /* mgdblpt.h in Headers */,
 				AE34CF6C17F903B4004BC88B /* gigraph_.h in Headers */,

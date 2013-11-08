@@ -117,12 +117,16 @@ public class MgCoreView {
     democmdsJNI.MgCoreView_clear(swigCPtr, this);
   }
 
+  public boolean loadFromFile(String vgfile, boolean readOnly, boolean needLock) {
+    return democmdsJNI.MgCoreView_loadFromFile__SWIG_0(swigCPtr, this, vgfile, readOnly, needLock);
+  }
+
   public boolean loadFromFile(String vgfile, boolean readOnly) {
-    return democmdsJNI.MgCoreView_loadFromFile__SWIG_0(swigCPtr, this, vgfile, readOnly);
+    return democmdsJNI.MgCoreView_loadFromFile__SWIG_1(swigCPtr, this, vgfile, readOnly);
   }
 
   public boolean loadFromFile(String vgfile) {
-    return democmdsJNI.MgCoreView_loadFromFile__SWIG_1(swigCPtr, this, vgfile);
+    return democmdsJNI.MgCoreView_loadFromFile__SWIG_2(swigCPtr, this, vgfile);
   }
 
   public boolean saveToFile(String vgfile, boolean pretty) {
@@ -131,6 +135,26 @@ public class MgCoreView {
 
   public boolean saveToFile(String vgfile) {
     return democmdsJNI.MgCoreView_saveToFile__SWIG_1(swigCPtr, this, vgfile);
+  }
+
+  public boolean loadShapes(SWIGTYPE_p_MgStorage s, boolean readOnly, boolean needLock) {
+    return democmdsJNI.MgCoreView_loadShapes__SWIG_0(swigCPtr, this, SWIGTYPE_p_MgStorage.getCPtr(s), readOnly, needLock);
+  }
+
+  public boolean loadShapes(SWIGTYPE_p_MgStorage s, boolean readOnly) {
+    return democmdsJNI.MgCoreView_loadShapes__SWIG_1(swigCPtr, this, SWIGTYPE_p_MgStorage.getCPtr(s), readOnly);
+  }
+
+  public boolean loadShapes(SWIGTYPE_p_MgStorage s) {
+    return democmdsJNI.MgCoreView_loadShapes__SWIG_2(swigCPtr, this, SWIGTYPE_p_MgStorage.getCPtr(s));
+  }
+
+  public boolean saveShapes(SWIGTYPE_p_MgStorage s) {
+    return democmdsJNI.MgCoreView_saveShapes(swigCPtr, this, SWIGTYPE_p_MgStorage.getCPtr(s));
+  }
+
+  public boolean loadDynamicShapes(SWIGTYPE_p_MgStorage s) {
+    return democmdsJNI.MgCoreView_loadDynamicShapes(swigCPtr, this, SWIGTYPE_p_MgStorage.getCPtr(s));
   }
 
   public String getContent() {

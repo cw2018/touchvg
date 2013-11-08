@@ -19,11 +19,13 @@ class MgShapesLock
 public:
     enum { NotNotify = 0x100, ReadOnly = 0,
         Add = 0x1, Remove = 0x2, Edit = 0x4, Load = 0x8 };
+    
     MgShapesLock(int flags, MgView* view, int timeout = 200);
     MgShapesLock(MgView* view, int timeout = 200);
     ~MgShapesLock();
 
     bool locked() const;
+    void unlock();
     static bool lockedForRead(MgView* view);
     static bool lockedForWrite(MgView* view);
 

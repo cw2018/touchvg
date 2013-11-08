@@ -25,13 +25,21 @@ MgShapesLock::MgShapesLock(MgView* view, int timeout)
 
 MgShapesLock::~MgShapesLock()
 {
-    bool ended = false;
-    
-    if (locked()) {
-        ended = (0 == locker->unlockData((mode & 2) != 0));
-    }
-    if (mode == 2 && ended) {
-        locker->afterChanged();
+    unlock();
+}
+
+void MgShapesLock::unlock()
+{
+    if (locker) {
+        bool ended = false;
+        
+        if (locked()) {
+            ended = (0 == locker->unlockData((mode & 2) != 0));
+        }
+        if (mode == 2 && ended) {
+            locker->afterChanged();
+        }
+        locker = NULL;
     }
 }
 

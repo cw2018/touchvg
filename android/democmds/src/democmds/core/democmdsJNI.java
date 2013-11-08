@@ -50,10 +50,16 @@ public class democmdsJNI {
   public final static native int MgCoreView_getSelectedShapeType(long jarg1, MgCoreView jarg1_);
   public final static native int MgCoreView_getSelectedShapeID(long jarg1, MgCoreView jarg1_);
   public final static native void MgCoreView_clear(long jarg1, MgCoreView jarg1_);
-  public final static native boolean MgCoreView_loadFromFile__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, boolean jarg3);
-  public final static native boolean MgCoreView_loadFromFile__SWIG_1(long jarg1, MgCoreView jarg1_, String jarg2);
+  public final static native boolean MgCoreView_loadFromFile__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, boolean jarg3, boolean jarg4);
+  public final static native boolean MgCoreView_loadFromFile__SWIG_1(long jarg1, MgCoreView jarg1_, String jarg2, boolean jarg3);
+  public final static native boolean MgCoreView_loadFromFile__SWIG_2(long jarg1, MgCoreView jarg1_, String jarg2);
   public final static native boolean MgCoreView_saveToFile__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, boolean jarg3);
   public final static native boolean MgCoreView_saveToFile__SWIG_1(long jarg1, MgCoreView jarg1_, String jarg2);
+  public final static native boolean MgCoreView_loadShapes__SWIG_0(long jarg1, MgCoreView jarg1_, long jarg2, boolean jarg3, boolean jarg4);
+  public final static native boolean MgCoreView_loadShapes__SWIG_1(long jarg1, MgCoreView jarg1_, long jarg2, boolean jarg3);
+  public final static native boolean MgCoreView_loadShapes__SWIG_2(long jarg1, MgCoreView jarg1_, long jarg2);
+  public final static native boolean MgCoreView_saveShapes(long jarg1, MgCoreView jarg1_, long jarg2);
+  public final static native boolean MgCoreView_loadDynamicShapes(long jarg1, MgCoreView jarg1_, long jarg2);
   public final static native String MgCoreView_getContent(long jarg1, MgCoreView jarg1_);
   public final static native void MgCoreView_freeContent(long jarg1, MgCoreView jarg1_);
   public final static native boolean MgCoreView_setContent(long jarg1, MgCoreView jarg1_, String jarg2);

@@ -20,6 +20,7 @@ class MgView;
 - (void)onCommandChanged:(id)view;      //!< 当前命令改变的通知
 - (void)onSelectionChanged:(id)view;    //!< 图形选择集改变的通知
 - (void)onContentChanged:(id)view;      //!< 图形数据改变的通知
+- (void)onDynamicChanged:(id)view;      //!< 图形动态改变的通知
 
 @end
 
@@ -50,6 +51,7 @@ class MgView;
 
 + (GiGraphView *)activeView;                //!< 得到当前激活的绘图视图
 - (void)activiteView;                       //!< 设置为当前活动视图，触摸时自动调用
+- (UIView *)dynamicShapeView;               //!< 动态图形视图
 
 #ifdef __cplusplus
 - (GiView *)viewAdapter;                    //!< 得到视图适配器对象, GiViewAdapter

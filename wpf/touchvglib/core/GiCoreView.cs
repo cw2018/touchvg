@@ -218,13 +218,18 @@ public class GiCoreView : MgCoreView {
     touchvgPINVOKE.GiCoreView_clear(swigCPtr);
   }
 
+  public override bool loadFromFile(string vgfile, bool readOnly, bool needLock) {
+    bool ret = touchvgPINVOKE.GiCoreView_loadFromFile__SWIG_0(swigCPtr, vgfile, readOnly, needLock);
+    return ret;
+  }
+
   public override bool loadFromFile(string vgfile, bool readOnly) {
-    bool ret = touchvgPINVOKE.GiCoreView_loadFromFile__SWIG_0(swigCPtr, vgfile, readOnly);
+    bool ret = touchvgPINVOKE.GiCoreView_loadFromFile__SWIG_1(swigCPtr, vgfile, readOnly);
     return ret;
   }
 
   public override bool loadFromFile(string vgfile) {
-    bool ret = touchvgPINVOKE.GiCoreView_loadFromFile__SWIG_1(swigCPtr, vgfile);
+    bool ret = touchvgPINVOKE.GiCoreView_loadFromFile__SWIG_2(swigCPtr, vgfile);
     return ret;
   }
 
@@ -235,6 +240,31 @@ public class GiCoreView : MgCoreView {
 
   public override bool saveToFile(string vgfile) {
     bool ret = touchvgPINVOKE.GiCoreView_saveToFile__SWIG_1(swigCPtr, vgfile);
+    return ret;
+  }
+
+  public override bool loadShapes(MgStorage s, bool readOnly, bool needLock) {
+    bool ret = touchvgPINVOKE.GiCoreView_loadShapes__SWIG_0(swigCPtr, MgStorage.getCPtr(s), readOnly, needLock);
+    return ret;
+  }
+
+  public override bool loadShapes(MgStorage s, bool readOnly) {
+    bool ret = touchvgPINVOKE.GiCoreView_loadShapes__SWIG_1(swigCPtr, MgStorage.getCPtr(s), readOnly);
+    return ret;
+  }
+
+  public override bool loadShapes(MgStorage s) {
+    bool ret = touchvgPINVOKE.GiCoreView_loadShapes__SWIG_2(swigCPtr, MgStorage.getCPtr(s));
+    return ret;
+  }
+
+  public override bool saveShapes(MgStorage s) {
+    bool ret = touchvgPINVOKE.GiCoreView_saveShapes(swigCPtr, MgStorage.getCPtr(s));
+    return ret;
+  }
+
+  public override bool loadDynamicShapes(MgStorage s) {
+    bool ret = touchvgPINVOKE.GiCoreView_loadDynamicShapes(swigCPtr, MgStorage.getCPtr(s));
     return ret;
   }
 
