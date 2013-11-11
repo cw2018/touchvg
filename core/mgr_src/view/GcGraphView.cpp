@@ -10,16 +10,11 @@
 
 int GcBaseView::drawAll(GiGraphics& gs)
 {
-    MgShapesLock locker(MgShapesLock::ReadOnly, _mgview);
-    return locker.locked() && doc()->draw(gs);
+    return doc()->draw(gs);
 }
 
 int GcBaseView::drawAppend(const int* newids, GiGraphics& gs)
 {
-    MgShapesLock locker(MgShapesLock::ReadOnly, _mgview);
-    if (!locker.locked())
-        return 0;
-    
     int n = 0;
     for (; *newids; newids++) {
         MgShape* sp = shapes()->findShape(*newids);

@@ -48,7 +48,7 @@ public:
     GiCoreView *coreView() { return _coreView; }
     ImageCache *imageCache() { return _imageCache; }
     UIView *getDynView();
-    UIImage *snapshot(bool autoDraw);
+    UIImage *snapshotForAppend();
     bool drawAppend(GiCanvas* canvas);
     void clearCachedData();
     
@@ -116,6 +116,7 @@ private:
 
 - (void)ignoreTouch:(CGPoint)pt :(UIView *)handledButton;
 - (void)redrawForDelay;
+- (void)regenAppendForDelay;
 - (void)onContextActionsDisplay:(NSMutableArray *)buttons;
 
 @end

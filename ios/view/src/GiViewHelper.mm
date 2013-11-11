@@ -34,14 +34,14 @@ GiColor CGColorToGiColor(CGColorRef color) {
 @synthesize command, lineWidth, strokeWidth, lineColor, lineAlpha;
 @synthesize lineStyle, fillColor, fillAlpha;
 
-- (id)init:(GiGraphView *)view {
+- (id)initWithView:(GiGraphView *)view {
     self = [super init];
     _view = view ? view : [GiGraphView activeView];
     return self;
 }
 
 + (id)instance:(GiGraphView *)view {
-    return [[[GiViewHelper alloc]init:view]autorelease];
+    return [[[GiViewHelper alloc]initWithView:view]autorelease];
 }
 
 + (GiGraphView *)activeView {

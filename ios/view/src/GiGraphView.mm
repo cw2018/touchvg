@@ -152,7 +152,15 @@ GiColor CGColorToGiColor(CGColorRef color);
 }
 
 - (UIImage *)snapshot {
-    return _adapter->snapshot(true);
+    [self hideContextActions];
+    
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (BOOL)savePng:(NSString *)filename {
@@ -361,6 +369,10 @@ GiColor CGColorToGiColor(CGColorRef color);
 
 - (void)redrawForDelay {
     _adapter->redraw();
+}
+
+- (void)regenAppendForDelay {
+    _adapter->regenAppend();
 }
 
 - (void)onContextActionsDisplay:(NSMutableArray *)buttons {

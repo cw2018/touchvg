@@ -24,6 +24,7 @@ void MgSplines::_clearCachedData()
     _bzcount = 0;
     if (_knotvs) {
         delete[] _knotvs;
+        _knotvs = NULL;
     }
 }
 
@@ -34,6 +35,7 @@ void MgSplines::_update()
     if (_bzcount < _count) {
         if (_knotvs) {
             delete[] _knotvs;
+            _knotvs = NULL;
         }
         _bzcount = _maxCount;
         _knotvs = new Vector2d[_bzcount];

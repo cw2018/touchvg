@@ -98,8 +98,9 @@ public:
     }
 
     ~GiCoreViewImpl() {
-        if (dynshapes)
+        if (dynshapes) {
             dynshapes->release();
+        }
         _cmds->release();
         delete _doc;
     }
@@ -208,7 +209,9 @@ public:
         else {                                  // 已经regenAppend并增量重绘
             regenAll();
         }
-        getCmdSubject()->onShapeAdded(motion(), sp);
+        if (!dynshapes) {
+            getCmdSubject()->onShapeAdded(motion(), sp);
+        }
     }
 
     void redraw() {
@@ -584,6 +587,10 @@ void GiCoreViewImpl::clearRedrawFlag()
 
 int GiCoreView::drawAll(GiView* view, GiCanvas* canvas)
 {
+    MgShapesLock locker(MgShapesLock::ReadOnly, impl);
+    if (!locker.locked())
+        return 0;
+    
     GcBaseView* aview = impl->_doc->findView(view);
     GiGraphics* gs = aview->graph();
     int n = 0;
@@ -603,6 +610,10 @@ int GiCoreView::drawAll(GiView* view, GiCanvas* canvas)
 
 bool GiCoreView::drawAppend(GiView* view, GiCanvas* canvas)
 {
+    MgShapesLock locker(MgShapesLock::ReadOnly, impl);
+    if (!locker.locked())
+        return false;
+    
     GcBaseView* aview = impl->_doc->findView(view);
     GiGraphics* gs = aview->graph();
     int n = 0;
@@ -623,12 +634,13 @@ bool GiCoreView::drawAppend(GiView* view, GiCanvas* canvas)
 
 void GiCoreView::dynDraw(GiView* view, GiCanvas* canvas)
 {
+    MgDynShapeLock locker(false, impl);
     GcBaseView* aview = impl->_doc->findView(view);
     GiGraphics* gs = aview->graph();
 
     impl->motion()->d2mgs = impl->cmds()->displayMmToModel(1, gs);
 
-    if (aview && gs->beginPaint(canvas)) {
+    if (locker.locked() && aview && gs->beginPaint(canvas)) {
         impl->drawCommand(aview, impl->_motion, *gs);
         aview->dynDraw(impl->_motion, *gs);
         gs->endPaint();
@@ -869,6 +881,7 @@ bool GiCoreView::loadDynamicShapes(MgStorage* s)
         impl->dynshapes = NULL;
         ret = true;
     }
+    impl->redraw();
     
     return ret;
 }
@@ -903,12 +916,7 @@ bool GiCoreView::setContent(const char* content)
 
 bool GiCoreView::loadFromFile(const char* vgfile, bool readOnly, bool needLock)
 {
-#if defined(_MSC_VER) && _MSC_VER >= 1400 // VC8
-    FILE *fp = NULL;
-    fopen_s(&fp, vgfile, "rt");
-#else
-    FILE *fp = fopen(vgfile, "rt");
-#endif
+    FILE *fp = mgopenfile(vgfile, "rt");
     DrawLocker locker(impl);
     MgJsonStorage s;
     bool ret = loadShapes(s.storageForRead(fp), readOnly, needLock);
@@ -924,12 +932,7 @@ bool GiCoreView::loadFromFile(const char* vgfile, bool readOnly, bool needLock)
 
 bool GiCoreView::saveToFile(const char* vgfile, bool pretty)
 {
-#if defined(_MSC_VER) && _MSC_VER >= 1400 // VC8
-    FILE *fp = NULL;
-    fopen_s(&fp, vgfile, "wt");
-#else
-    FILE *fp = fopen(vgfile, "wt");
-#endif
+    FILE *fp = mgopenfile(vgfile, "wt");
     MgJsonStorage s;
     bool ret = (fp != NULL
         && saveShapes(s.storageForWrite())
@@ -1089,14 +1092,12 @@ bool GiCoreViewImpl::drawCommand(GcBaseView* view, const MgMotion& motion, GiGra
     bool ret = false;
 
     if (dynshapes) {
-        MgDynShapeLock locker(false, this);
-        ret = locker.locked() && dynshapes->draw(gs) > 0;
+        ret = dynshapes->draw(gs) > 0;
     }
     else if (view == curview) {
-        MgDynShapeLock locker(false, this);
         MgCommand* cmd = _cmds->getCommand();
 
-        ret = locker.locked() && cmd && cmd->draw(&motion, &gs);
+        ret = cmd && cmd->draw(&motion, &gs);
         if (ret && cmd->isDrawingCommand()) {
             getCmdSubject()->drawInShapeCommand(&motion, cmd, &gs);
         }

@@ -53,25 +53,20 @@ GiViewAdapter::~GiViewAdapter() {
     [_imageCache release];
 }
 
-UIImage * GiViewAdapter::snapshot(bool autoDraw) {
-    if (!autoDraw) {
-        _drawCount = 1;
-    }
-    long oldCount = _drawCount;
+UIImage * GiViewAdapter::snapshotForAppend() {
     UIImage *image = nil;
+    long oldCount = 1;
     
+    _drawCount = oldCount;
     hideContextActions();
     
     UIGraphicsBeginImageContextWithOptions(_view.bounds.size, _view.opaque, 0);
     [_view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    if (autoDraw || oldCount == _drawCount) {   // 不允许renderInContext触发drawRect时返回nil
+    if (oldCount == _drawCount) {   // 不允许renderInContext触发drawRect时返回nil
         image = UIGraphicsGetImageFromCurrentImageContext();
     }
     UIGraphicsEndImageContext();
-    if (!autoDraw) {
-        _drawCount = 0;
-    }
+    _drawCount = 0;
     
     return image;
 }
@@ -102,18 +97,32 @@ void GiViewAdapter::clearCachedData() {
 }
 
 void GiViewAdapter::regenAll() {
-    [_view setNeedsDisplay];
-    [_dynview setNeedsDisplay];
+    if ([NSThread isMainThread]) {
+        [_view setNeedsDisplay];
+        [_dynview setNeedsDisplay];
+    }
+    else {
+        [_view performSelectorOnMainThread:@selector(setNeedsDisplay)
+                                withObject:nil waitUntilDone:YES];
+        [_dynview performSelectorOnMainThread:@selector(setNeedsDisplay)
+                                withObject:nil waitUntilDone:YES];
+    }
 }
 
 void GiViewAdapter::regenAppend() {
-    [_tmpshot release];
-    _tmpshot = nil;                 // renderInContext可能会调用drawRect
-    _tmpshot = snapshot(false);     // 获取现有绘图快照
-    [_tmpshot retain];
-    
-    [_view setNeedsDisplay];
-    [_dynview setNeedsDisplay];
+    if ([NSThread isMainThread]) {
+        [_tmpshot release];
+        _tmpshot = nil;                 // renderInContext可能会调用drawRect
+        snapshotForAppend();            // 获取现有绘图快照
+        [_tmpshot retain];
+        
+        [_view setNeedsDisplay];
+        [_dynview setNeedsDisplay];
+    }
+    else {
+        [_view performSelectorOnMainThread:@selector(regenAppendForDelay)
+                                     withObject:nil waitUntilDone:YES];
+    }
 }
 
 UIView *GiViewAdapter::getDynView() {
@@ -127,11 +136,17 @@ UIView *GiViewAdapter::getDynView() {
 }
 
 void GiViewAdapter::redraw() {
-    if (getDynView()) {
-        [_dynview setNeedsDisplay];
+    if ([NSThread isMainThread]) {
+        if (getDynView()) {
+            [_dynview setNeedsDisplay];
+        }
+        else {
+            [_view performSelector:@selector(redrawForDelay) withObject:nil afterDelay:0.2];
+        }
     }
     else {
-        [_view performSelector:@selector(redrawForDelay) withObject:nil afterDelay:0.2];
+        [_dynview performSelectorOnMainThread:@selector(setNeedsDisplay)
+                                   withObject:nil waitUntilDone:YES];
     }
 }
 

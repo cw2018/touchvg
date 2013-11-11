@@ -64,6 +64,7 @@ class MgView;
 - (BOOL)savePng:(NSString *)filename;       //!< 保存静态图形的快照到PNG文件
 - (void)clearCachedData;                    //!< 释放临时数据内存
 
+- (void)hideContextActions;                 //!< 隐藏上下文按钮
 - (IBAction)onContextAction:(id)sender;     //!< 上下文按钮的响应函数
 
 - (void)addDelegate:(id<GiGraphViewDelegate>)d;     //!< 增加绘图消息观察者
