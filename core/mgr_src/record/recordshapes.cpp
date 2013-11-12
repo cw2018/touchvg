@@ -292,7 +292,7 @@ void MgRecordShapes::Impl::loadPlayShapes(MgShapes* shapes, MgStorage* s, MgShap
 {
     if (s->readInt("updateFlags", 0) & (RECORD_ADD | RECORD_EDIT)) {
         shapes->load(coreView->viewAdapter()->getShapeFactory(), s, true);
-        newsp = shapes->findShape(s->readInt("addID", 0));  // shapeAdded增量显示方式容易冲突
+        //newsp = shapes->findShape(s->readInt("addID", 0));  // shapeAdded增量显示方式容易冲突
     }
     if (s->readNode("delete", -1, false)) {
         for (int i = 0, index = 0; ; i++) {
@@ -332,7 +332,7 @@ bool MgRecordShapes::play(int index)
     
     if (s && s->readNode("record", -1, false)) {
         int updateFlags = s->readInt("updateFlags", 0);
-        MgShapesLock locker(MgShapesLock::Load, updateFlags ? _im->coreView->viewAdapter() : NULL);
+        MgShapesLock locker(MgShapesLock::Load, updateFlags ? _im->coreView->viewAdapter() : NULL, 2000);
         
         if (locker.locked()) {
             MgShapes* shapes = MgShapes::fromHandle(_im->coreView->shapesHandle());
@@ -345,6 +345,7 @@ bool MgRecordShapes::play(int index)
                 _im->coreView->viewAdapter()->regenAll();
             }
             ret = true;
+            giSleep(50);
         }
         
         if (s->readNode("dynamic", -1, false)) {

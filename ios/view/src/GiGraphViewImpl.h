@@ -72,6 +72,10 @@ public:
     
 private:
     void setContextButton(UIButton *btn, NSString *caption, NSString *imageName);
+    bool isMainThread() const;
+    void regenAll_();
+    void regenAppend_();
+    void redraw_();
 };
 
 /*! \category GiGraphView()
@@ -116,7 +120,6 @@ private:
 
 - (void)ignoreTouch:(CGPoint)pt :(UIView *)handledButton;
 - (void)redrawForDelay;
-- (void)regenAppendForDelay;
 - (void)onContextActionsDisplay:(NSMutableArray *)buttons;
 
 @end

@@ -347,36 +347,30 @@ static int machToMs(uint64_t start)
 
 @end
 
-@implementation GraphView4
-
-- (void)run
-{
-    while (![_thread isCancelled]) {
-        [_dynview performSelectorOnMainThread:@selector(setNeedsDisplay)
-                                   withObject:nil waitUntilDone:YES];
-    }
+@interface GraphView4() {
+    BOOL _canceled;
 }
+@end
+
+@implementation GraphView4
 
 - (void)removeFromSuperview
 {
-    if (_thread) {
-        [_thread cancel];
-        if (![_thread isFinished])
-            [NSThread sleepForTimeInterval:0.1];
-        [_thread release];
-        _thread = nil;
-    }
+    _canceled = YES;
     [super removeFromSuperview];
 }
 
 - (void)didMoveToSuperview
 {
     [super didMoveToSuperview];
-    if (!_thread) {
-        _thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];
-        [_thread start];
-        _drawTimes++;
-    }
+    _drawTimes++;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        while (!_canceled) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setNeedsDisplay];
+            });
+        }
+    });
 }
 
 @end

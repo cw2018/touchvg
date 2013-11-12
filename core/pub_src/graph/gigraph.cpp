@@ -1012,6 +1012,47 @@ bool GiGraphics::drawClosedBSplines(const GiContext* ctx,
     return ret;
 }
 
+bool GiGraphics::drawQuadSplines(const GiContext* ctx, int count,
+                                 const Point2d* ctlpts, bool modelUnit)
+{
+    if (m_impl->drawRefcnt == 0 || count < 3 || ctlpts == NULL)
+        return false;
+    
+    GiLock lock (&m_impl->drawRefcnt);
+    const Box2d wndrect (DRAW_RECT(m_impl, modelUnit));
+    const Matrix2d matD(S2D(xf(), modelUnit));
+    Point2d mid1, mid2, pt, pt2;
+    int n = 0;
+    
+    rawBeginPath();
+    
+    for (int i = 0; i + 2 < count; i++) {
+        if (Box2d(3, ctlpts + i).isIntersect(wndrect)) {
+            pt2 = ctlpts[i+2];
+            mid1 = (ctlpts[i] + ctlpts[i+1]) / 2 * matD;
+            mid2 = (ctlpts[i+1] + pt2) / 2 * matD;
+            if (n++ == 0) {
+                pt = ctlpts[i] * matD;
+                rawMoveTo(pt.x, pt.y);
+                rawLineTo(mid1.x, mid1.y);
+            }
+            pt = ctlpts[i+1] * matD;
+            rawQuadTo(pt.x, pt.y, mid2.x, mid2.y);
+        }
+        else if (n > 0) {
+            pt = pt2 * matD;
+            rawLineTo(pt.x, pt.y);
+            n = 0;
+        }
+    }
+    if (n > 0) {
+        pt = pt2 * matD;
+        rawLineTo(pt.x, pt.y);
+    }
+    
+    return rawEndPath(ctx, false);
+}
+
 bool GiGraphics::drawPath(const GiContext* ctx, const GiPath& path, 
                           bool fill, bool modelUnit)
 {
@@ -1230,6 +1271,14 @@ bool GiGraphics::rawBezierTo(float c1x, float c1y, float c2x,
 {
     if (m_impl->canvas) {
         m_impl->canvas->bezierTo(c1x, c1y, c2x, c2y, x, y);
+    }
+    return !!m_impl->canvas;
+}
+
+bool GiGraphics::rawQuadTo(float cpx, float cpy, float x, float y)
+{
+    if (m_impl->canvas) {
+        m_impl->canvas->quadTo(cpx, cpy, x, y);
     }
     return !!m_impl->canvas;
 }

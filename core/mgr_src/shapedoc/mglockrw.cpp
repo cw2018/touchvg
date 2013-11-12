@@ -9,10 +9,10 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #endif
-static void giSleep(int ms) { Sleep(ms); }
+void giSleep(int ms) { Sleep(ms); }
 #else
 #include <unistd.h>
-static void giSleep(int ms) { usleep(ms * 1000); }
+void giSleep(int ms) { usleep(ms * 1000); }
 #endif
 
 MgLockRW::MgLockRW() : _editFlags(0)

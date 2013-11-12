@@ -10,6 +10,7 @@
 
 MgShapesLock::MgShapesLock(int flags, MgView* view, int timeout)
 {
+    timeout = timeout < 0 ? (flags == Load ? 1000 : 200) : timeout;
     locker = view ? view->getLockData() : NULL;
     mode = locker && locker->lockData(flags, timeout) ? (flags ? 2 : 1) : 0;
     if (mode == 2 && (flags & NotNotify) != 0) {

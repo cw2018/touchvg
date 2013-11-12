@@ -603,6 +603,8 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_drawBSplines__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_);
   public final static native boolean GiGraphics_drawClosedBSplines__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_, boolean jarg5);
   public final static native boolean GiGraphics_drawClosedBSplines__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_);
+  public final static native boolean GiGraphics_drawQuadSplines__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_, boolean jarg5);
+  public final static native boolean GiGraphics_drawQuadSplines__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_);
   public final static native boolean GiGraphics_drawPath__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, GiPath jarg3_, boolean jarg4, boolean jarg5);
   public final static native boolean GiGraphics_drawPath__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, GiPath jarg3_, boolean jarg4);
   public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, boolean jarg4);
@@ -1066,7 +1068,6 @@ public class touchvgJNI {
   public final static native int MgSplines_getHandleType(long jarg1, MgSplines jarg1_, int jarg2);
   public final static native boolean MgSplines_offset(long jarg1, MgSplines jarg1_, long jarg2, Vector2d jarg2_, int jarg3);
   public final static native float MgSplines_hitTest(long jarg1, MgSplines jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
-  public final static native void MgSplines_smooth(long jarg1, MgSplines jarg1_, float jarg2);
   public final static native boolean MgSplines_isCurve(long jarg1, MgSplines jarg1_);
   public final static native long new_MgParallel();
   public final static native void delete_MgParallel(long jarg1);
@@ -1435,6 +1436,7 @@ public class touchvgJNI {
   public final static native float MgMotion_displayMmToModel__SWIG_0(long jarg1, MgMotion jarg1_, float jarg2, long jarg3, GiGraphics jarg3_);
   public final static native float MgMotion_displayMmToModel__SWIG_1(long jarg1, MgMotion jarg1_, float jarg2);
   public final static native void delete_MgMotion(long jarg1);
+  public final static native void giSleep(int jarg1);
   public final static native int MgShapesLock_NotNotify_get();
   public final static native int MgShapesLock_ReadOnly_get();
   public final static native int MgShapesLock_Add_get();

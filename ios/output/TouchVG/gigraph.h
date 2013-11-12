@@ -306,6 +306,17 @@ public:
     */
     bool drawClosedBSplines(const GiContext* ctx, 
         int count, const Point2d* ctlpts, bool modelUnit = true);
+    
+    //! 绘制二次B样条曲线，模型坐标或世界坐标
+    /*!
+        \param ctx 绘图参数，忽略填充参数，为NULL时取为上一个绘图参数
+        \param count 控制点的点数，至少为3
+        \param ctlpts 控制点坐标数组，点数为count
+        \param modelUnit 指定的坐标尺寸是模型坐标(true)还是世界坐标(false)
+        \return 是否显示成功。失败原因为参数错误或超出剪裁区域
+    */
+    bool drawQuadSplines(const GiContext* ctx,
+                         int count, const Point2d* ctlpts, bool modelUnit = true);
 
     //! 显示路径对象
     bool drawPath(const GiContext* ctx, const GiPath& path, 
@@ -344,6 +355,7 @@ public:
     bool rawMoveTo(float x, float y);
     bool rawLineTo(float x, float y);
     bool rawBezierTo(float c1x, float c1y, float c2x, float c2y, float x, float y);
+    bool rawQuadTo(float cpx, float cpy, float x, float y);
     bool rawClosePath();
     bool rawText(const char* text, float x, float y, float h, int align = 1);
     bool rawImage(const char* name, float xc, float yc, float w, float h, float angle);

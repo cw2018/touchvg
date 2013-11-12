@@ -371,10 +371,6 @@ GiColor CGColorToGiColor(CGColorRef color);
     _adapter->redraw();
 }
 
-- (void)regenAppendForDelay {
-    _adapter->regenAppend();
-}
-
 - (void)onContextActionsDisplay:(NSMutableArray *)buttons {
     _buttonHandled = NO;
 }

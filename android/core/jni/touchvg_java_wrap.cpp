@@ -19471,6 +19471,54 @@ SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1drawClosedB
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1drawQuadSplines_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jboolean jarg5) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiContext *arg2 = (GiContext *) 0 ;
+  int arg3 ;
+  Point2d *arg4 = (Point2d *) 0 ;
+  bool arg5 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiContext **)&jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = *(Point2d **)&jarg4; 
+  arg5 = jarg5 ? true : false; 
+  result = (bool)(arg1)->drawQuadSplines((GiContext const *)arg2,arg3,(Point2d const *)arg4,arg5);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1drawQuadSplines_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiContext *arg2 = (GiContext *) 0 ;
+  int arg3 ;
+  Point2d *arg4 = (Point2d *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiContext **)&jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = *(Point2d **)&jarg4; 
+  result = (bool)(arg1)->drawQuadSplines((GiContext const *)arg2,arg3,(Point2d const *)arg4);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1drawPath_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jboolean jarg4, jboolean jarg5) {
   jboolean jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
@@ -27267,19 +27315,6 @@ SWIGEXPORT jfloat JNICALL Java_touchvg_core_touchvgJNI_MgSplines_1hitTest(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgSplines_1smooth(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
-  MgSplines *arg1 = (MgSplines *) 0 ;
-  float arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgSplines **)&jarg1; 
-  arg2 = (float)jarg2; 
-  (arg1)->smooth(arg2);
-}
-
-
 SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgSplines_1isCurve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   MgSplines *arg1 = (MgSplines *) 0 ;
@@ -33237,6 +33272,16 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgMotion(JNIEnv *je
   (void)jcls;
   arg1 = *(MgMotion **)&jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_giSleep(JNIEnv *jenv, jclass jcls, jint jarg1) {
+  int arg1 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  giSleep(arg1);
 }
 
 

@@ -270,10 +270,6 @@ private:
         doc()->registerObserver(func, obj); }
     void unregisterDocObserver(DocLocked func, void* obj) {
         doc()->unregisterObserver(func, obj); }
-    bool lockData(int flags, int timeout) {
-        if (flags && flags != MgShapesLock::Load && doc()->isReadOnly())
-            return false;
-        return doc()->lockData(flags, timeout); }
     long unlockData(bool forWrite) {
         return doc()->unlockData(forWrite); }
     void afterChanged() { doc()->afterChanged(); }
@@ -285,14 +281,30 @@ private:
         return doc()->getLockData()->getEditFlags(); }
     void resetEditFlags() {
         doc()->getLockData()->setEditFlags(0); }
-    bool lockDynData(bool forWrite, int timeout) {
-        return doc()->getDynLockData()->lockData(forWrite, timeout); }
     long unlockDynData(bool forWrite) {
         return doc()->getDynLockData()->unlockData(forWrite); }
     bool lockedForReadDyn() const {
         return doc()->getDynLockData()->lockedForRead(); }
     bool lockedForWriteDyn() const {
         return doc()->getDynLockData()->lockedForWrite(); }
+    
+    bool lockData(int flags, int timeout) {
+        if (flags && flags != MgShapesLock::Load && doc()->isReadOnly())
+            return false;
+        if (!doc()->lockData(flags, timeout)) {
+            LOGD("fail to lock shapes, %d", flags);
+            return false;
+        }
+        return true;
+    }
+    
+    bool lockDynData(bool forWrite, int timeout) {
+        if (!doc()->getDynLockData()->lockData(forWrite, timeout)) {
+            LOGD("lockDynData fail, %d", forWrite);
+            return false;
+        }
+        return true;
+    }
 
     void registerShape(int type, MgShape* (*creator)()) {
         type = type & 0xFFFF;
@@ -464,7 +476,7 @@ public:
 };
 
 GcBaseView::GcBaseView(MgView* mgview, GiView *view)
-: _mgview(mgview), _view(view), _gs(&_xf)
+: _mgview(mgview), _view(view), _gs(&_xf), _dyngs(&_xf)
 {
     mgview->document()->addView(this);
 }
@@ -636,7 +648,7 @@ void GiCoreView::dynDraw(GiView* view, GiCanvas* canvas)
 {
     MgDynShapeLock locker(false, impl);
     GcBaseView* aview = impl->_doc->findView(view);
-    GiGraphics* gs = aview->graph();
+    GiGraphics* gs = aview->graph(true);
 
     impl->motion()->d2mgs = impl->cmds()->displayMmToModel(1, gs);
 

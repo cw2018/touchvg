@@ -9,6 +9,8 @@
 class MgView;
 struct MgLockData;
 
+void giSleep(int ms);
+
 //! 图形列表锁定辅助类
 /*! \ingroup CORE_COMMAND
 */

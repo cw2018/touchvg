@@ -96,32 +96,36 @@ void GiViewAdapter::clearCachedData() {
     _coreView->clearCachedData();
 }
 
+void GiViewAdapter::regenAll_() {
+    [_view setNeedsDisplay];
+    [_dynview setNeedsDisplay];
+}
+
 void GiViewAdapter::regenAll() {
-    if ([NSThread isMainThread]) {
-        [_view setNeedsDisplay];
-        [_dynview setNeedsDisplay];
+    if (isMainThread()) {
+        regenAll_();
     }
     else {
-        [_view performSelectorOnMainThread:@selector(setNeedsDisplay)
-                                withObject:nil waitUntilDone:YES];
-        [_dynview performSelectorOnMainThread:@selector(setNeedsDisplay)
-                                withObject:nil waitUntilDone:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{ regenAll_(); });
     }
 }
 
+void GiViewAdapter::regenAppend_() {
+    [_tmpshot release];
+    _tmpshot = nil;                         // renderInContext可能会调用drawRect
+    _tmpshot = snapshotForAppend();         // 获取现有绘图快照
+    [_tmpshot retain];
+    
+    [_view setNeedsDisplay];
+    [_dynview setNeedsDisplay];
+}
+
 void GiViewAdapter::regenAppend() {
-    if ([NSThread isMainThread]) {
-        [_tmpshot release];
-        _tmpshot = nil;                 // renderInContext可能会调用drawRect
-        snapshotForAppend();            // 获取现有绘图快照
-        [_tmpshot retain];
-        
-        [_view setNeedsDisplay];
-        [_dynview setNeedsDisplay];
+    if (isMainThread()) {
+        regenAppend_();
     }
     else {
-        [_view performSelectorOnMainThread:@selector(regenAppendForDelay)
-                                     withObject:nil waitUntilDone:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{ regenAppend_(); });
     }
 }
 
@@ -135,19 +139,26 @@ UIView *GiViewAdapter::getDynView() {
     return _dynview;
 }
 
-void GiViewAdapter::redraw() {
-    if ([NSThread isMainThread]) {
-        if (getDynView()) {
-            [_dynview setNeedsDisplay];
-        }
-        else {
-            [_view performSelector:@selector(redrawForDelay) withObject:nil afterDelay:0.2];
-        }
+void GiViewAdapter::redraw_() {
+    if (getDynView()) {
+        [_dynview setNeedsDisplay];
     }
     else {
-        [_dynview performSelectorOnMainThread:@selector(setNeedsDisplay)
-                                   withObject:nil waitUntilDone:YES];
+        [_view performSelector:@selector(redrawForDelay) withObject:nil afterDelay:0.2];
     }
+}
+
+void GiViewAdapter::redraw() {
+    if (isMainThread()) {
+        redraw_();
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{ redraw_(); });
+    }
+}
+
+bool GiViewAdapter::isMainThread() const {
+    return dispatch_get_current_queue() == dispatch_get_main_queue();
 }
 
 bool GiViewAdapter::dispatchGesture(GiGestureType gestureType, GiGestureState gestureState, CGPoint pt) {

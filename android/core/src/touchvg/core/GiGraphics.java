@@ -239,6 +239,14 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_drawClosedBSplines__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, count, Point2d.getCPtr(ctlpts), ctlpts);
   }
 
+  public boolean drawQuadSplines(GiContext ctx, int count, Point2d ctlpts, boolean modelUnit) {
+    return touchvgJNI.GiGraphics_drawQuadSplines__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, count, Point2d.getCPtr(ctlpts), ctlpts, modelUnit);
+  }
+
+  public boolean drawQuadSplines(GiContext ctx, int count, Point2d ctlpts) {
+    return touchvgJNI.GiGraphics_drawQuadSplines__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, count, Point2d.getCPtr(ctlpts), ctlpts);
+  }
+
   public boolean drawPath(GiContext ctx, GiPath path, boolean fill, boolean modelUnit) {
     return touchvgJNI.GiGraphics_drawPath__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, GiPath.getCPtr(path), path, fill, modelUnit);
   }
